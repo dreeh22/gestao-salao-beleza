@@ -1,0 +1,12 @@
+.main {
+  background-color: #ecf0f5;
+  min-height: calc(100vh - 52px);
+  overflow: hidden;
+  height: 100%;
+}
+
+.content {
+  width: 80%;
+  padding-top: 20px;
+  float:left;
+}
