@@ -8,8 +8,8 @@
 .menu{
 width: 20%;
 height: 100%;
-border-top: 1px solid #333;
-background-color: #343A40;
+border-top: 1px solid #ff8888;
+background-color: #FF6666;
 flex-shrink: 0;
 transition: width .5s;
 float:left;
