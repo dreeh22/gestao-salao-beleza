@@ -1,0 +1,12 @@
+{
+  "servico": [
+    {
+      "id": 1,
+      "nomeServico": "Corte de Cabelo"
+    },
+    {
+      "nomeServico": "Progressiva",
+      "id": 2
+    }
+  ]
+}

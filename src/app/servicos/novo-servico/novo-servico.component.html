@@ -1,10 +1,30 @@
+<section>
+
 
 <h4 class="titulo">Novo Serviço</h4>
 
 <div class="card">
+
+  <div class="card-header">
+    Serviços
+  </div>
+
   <div class="card-body">
-    <h5 class="card-title">Título especial</h5>
-    <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-    <a href="#" class="btn btn-primary">Visitar</a>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(servico)">
+
+      <div class="form-group">
+        <label for="nomeServico">Nome do Serviço</label>
+        <input type="text" class="form-control" id="nomeServico" name="nomeServico" [(ngModel)]="servico.nomeServico" placeholder="Insira um serviço">
+      </div>
+
+      <button type="submit" class="btn" style="background-color: #FF6666; color: #FFF;">Salvar</button>
+
+    </form>
+  
   </div>
 </div>
+
+<app-lista-servicos [listaRecebida]="servicos"></app-lista-servicos>
+
+</section>
