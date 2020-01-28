@@ -11,7 +11,7 @@ export class ListaServicosComponent implements OnInit {
 
   servicos: Servico [] = [];
 
-  @Input() listaRecebida: Servico [] = [];
+  @Input() listaRecebida: Servico [];
 
   constructor(private servicoService: ServicoService) { }
 
@@ -19,6 +19,9 @@ export class ListaServicosComponent implements OnInit {
     this.servicoService.getServicos().subscribe(dados => this.listaRecebida = dados);
   }
 
+  editarServico(servico){
+    console.log('SERVIÇO CAPTURADO: ', servico)
+  }
 
 
 }

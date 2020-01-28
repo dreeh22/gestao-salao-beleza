@@ -4,7 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: 'servicos/novo', component: NovoServicoComponent}
+  {path: 'servicos/novo', component: NovoServicoComponent},
+  {path: 'servicos/editar/:id', component: NovoServicoComponent},
+  {path: '', pathMatch: 'full', redirectTo: '/'}
 ];
 
 @NgModule({

@@ -1,7 +1,9 @@
 <section>
 
-
 <h4 class="titulo">Novo Serviço</h4>
+
+<app-mensagem-sucesso></app-mensagem-sucesso>
+<app-mensagem-erro></app-mensagem-erro>
 
 <div class="card">
 
@@ -14,11 +16,31 @@
     <form #form="ngForm" (ngSubmit)="onSubmit(servico)">
 
       <div class="form-group">
-        <label for="nomeServico">Nome do Serviço</label>
-        <input type="text" class="form-control" id="nomeServico" name="nomeServico" [(ngModel)]="servico.nomeServico" placeholder="Insira um serviço">
+        <label for="nomeServico" label-control>Nome do Serviço</label>
+        <input type="text" class="form-control"
+                           id="nomeServico" 
+                           name="nomeServico" 
+                           #nome="ngModel"
+                           [(ngModel)]="servico.nomeServico" 
+                           placeholder="Insira um serviço"
+                           required
+                           minlength="5"
+                           maxlength="80">
       </div>
 
-      <button type="submit" class="btn" style="background-color: #FF6666; color: #FFF;">Salvar</button>
+      <div *ngIf="nome.invalid && nome.touched" style="margin-bottom: 1%;" class="alert alert-danger">
+          <span>Campo Obrigatório.</span>
+      </div>
+
+      <div *ngIf="nome.invalid && nome.errors.minlength && nome.touched" style="margin-bottom: 1%;" class="alert alert-danger">
+        <span>Quantidade de caracteres insuficiente.</span>
+    </div>
+
+    <div *ngIf="nome.invalid && nome.errors.maxlength" style="margin-bottom: 1%;" class="alert alert-danger">
+      <span>Quantidade de caracteres Excedido.</span>
+    </div>
+
+      <button type="submit" class="btn" [disabled]="form.invalid" style="background-color: #FF6666; color: #FFF;">Salvar</button>
 
     </form>
   

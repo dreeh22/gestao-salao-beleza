@@ -9,6 +9,8 @@ import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ListaServicosComponent } from './servicos/lista-servicos/lista-servicos.component';
+import { MensagemErroComponent } from './mensagens/mensagem-erro/mensagem-erro.component';
+import { MensagemSucessoComponent } from './mensagens/mensagem-sucesso/mensagem-sucesso.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ListaServicosComponent } from './servicos/lista-servicos/lista-servicos
     BarraNavegacaoComponent,
     NovoServicoComponent,
     MenuComponent,
-    ListaServicosComponent
+    ListaServicosComponent,
+    MensagemErroComponent,
+    MensagemSucessoComponent,
   ],
   imports: [
     BrowserModule,

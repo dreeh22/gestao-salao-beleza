@@ -8,23 +8,29 @@
   
       <form #form="ngForm">
   
-        <table class="table table-hover">
+        <table class="table table-hover" style="text-align: center;" *ngIf="listaRecebida.length >= 0">
 
             <thead>
+              
                 <tr>
-                    <td class="font-weight-bold">ID</td>
-                    <td class="font-weight-bold">Serviço</td>
-                    <td class="font-weight-bold">Ações</td>
+                    <th scope="col" class="font-weight-bold" style="width: 100px;">ID</th>               
+                    <th scope="col" class="font-weight-bold" style="width: 250px;">Serviço</th>
+                    <th scope="col" class="font-weight-bold" style="width: 100px;">Ações</th>
                 </tr>
+              
             </thead>
 
             <tbody>
 
                 <tr *ngFor="let servico of listaRecebida">
                     <td>{{servico.id}}</td>
+                    
                     <td>{{servico.nomeServico}}</td>
-                    <td>
-                        <button class="btn btn-primary" style="margin-right: 2%;">Editar</button>
+                    
+                    <td >
+                        <button class="btn btn-primary" 
+                                style="margin-right: 2%;"
+                                routerLink="editar/{{servico.id}}">Editar</button>
                         <button class="btn btn-danger">Excluir</button>
 
                         <button class="btn btn-default" style="margin-right: 2%;">
@@ -36,7 +42,10 @@
             </tbody>
 
         </table>
-  
+
+        <div *ngIf="listaRecebida.length == 0">
+            <span>Nenhum serviço encontrado.</span>
+        </div>
       </form>
     
     </div>

@@ -9,3 +9,7 @@
 
 }
 
+.ng-invalid.ng-touched{
+  border-color: #FF6666;
+}
+
