@@ -37,11 +37,11 @@ export class NovoServicoComponent implements OnInit {
               this.msgErro.setErro('Ocorreu um erro inesperado...');
               console.error(err)
              }
-    
+
     );
     this.servicoService.getServicos().subscribe(dados => this.servicos = dados);
     this.servico = new Servico();
-    
+
   }
 
 }
