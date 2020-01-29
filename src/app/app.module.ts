@@ -11,6 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ListaServicosComponent } from './servicos/lista-servicos/lista-servicos.component';
 import { MensagemErroComponent } from './mensagens/mensagem-erro/mensagem-erro.component';
 import { MensagemSucessoComponent } from './mensagens/mensagem-sucesso/mensagem-sucesso.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import { MensagemSucessoComponent } from './mensagens/mensagem-sucesso/mensagem-
     MenuComponent,
     ListaServicosComponent,
     MensagemErroComponent,
-    MensagemSucessoComponent,
+    MensagemSucessoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

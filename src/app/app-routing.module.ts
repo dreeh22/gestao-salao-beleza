@@ -4,13 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: 'servicos/novo', component: NovoServicoComponent},
-  {path: 'servicos/editar/:id', component: NovoServicoComponent},
-  {path: '', pathMatch: 'full', redirectTo: '/'}
+  {path: '', pathMatch: 'full', redirectTo: '/'},
+  {path: 'servico/novo', component: NovoServicoComponent},
+  {path: 'servico/editar/:id', component: NovoServicoComponent}
+  
 ];
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes) ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -8,7 +8,7 @@
   
       <form #form="ngForm">
   
-        <table class="table table-hover" style="text-align: center;" *ngIf="listaRecebida.length >= 0">
+        <table class="table table-hover" style="text-align: center;" *ngIf="listaRecebida; semServico">
 
             <thead>
               
@@ -30,12 +30,12 @@
                     <td >
                         <button class="btn btn-primary" 
                                 style="margin-right: 2%;"
-                                routerLink="editar/{{servico.id}}">Editar</button>
-                        <button class="btn btn-danger">Excluir</button>
+                                (click)="obterId(servico.id)">Editar</button>
 
-                        <button class="btn btn-default" style="margin-right: 2%;">
-                          <i class="fab fa-accessible-icon"></i>
-                        </button>
+
+                        <button class="btn btn-danger"
+                                style="margin-right: 2%;"
+                                (click)="obterIdDeletar(servico.id)">Excluir</button>
                     </td>
                 </tr>
 
@@ -43,11 +43,25 @@
 
         </table>
 
-        <div *ngIf="listaRecebida.length == 0">
+        <template #semServico>
             <span>Nenhum serviço encontrado.</span>
-        </div>
+        </template>
       </form>
     
     </div>
   </div>
+
+    <ng-template #modalDelete>
+
+      <div class="modal-header">
+        <h4 class="modal-title pull-center">Confirmação</h4>
+      </div>
+
+      <div class="modal-body text-center">
+        <p>Deseja realmente deletar esse serviço?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+      </div>
+    </ng-template>
+
   

@@ -22,4 +22,17 @@ export class ServicoService {
     return this.http.get<Servico[]>(environment.API);
   }
 
+  getServicoId(id: number){
+    return this.http.get<Servico>(`${environment.API}/${id}`);
+  }
+
+  editarServico(servico: Servico){
+    const url = `${environment.API}/${servico.id}`
+    return this.http.put(url, servico).pipe(take(1));
+  }
+
+  deletarServico(id:number){
+    return this.http.delete(`${environment.API}/${id}`).pipe(take(1));
+  }
+
 }

@@ -13,7 +13,9 @@
 
   <div class="card-body">
 
-    <form #form="ngForm" (ngSubmit)="onSubmit(servico)">
+    <form #form="ngForm" (ngSubmit)="onSubmit(servico); form.reset()">
+      
+      <input type="hidden" name="id" [(ngModel)]="servico.id" >
 
       <div class="form-group">
         <label for="nomeServico" label-control>Nome do Serviço</label>
@@ -28,7 +30,7 @@
                            maxlength="80">
       </div>
 
-      <div *ngIf="nome.invalid && nome.touched" style="margin-bottom: 1%;" class="alert alert-danger">
+      <div *ngIf="nome.invalid && (nome.touched || nome.dirty)" style="margin-bottom: 1%;" class="alert alert-danger">
           <span>Campo Obrigatório.</span>
       </div>
 
