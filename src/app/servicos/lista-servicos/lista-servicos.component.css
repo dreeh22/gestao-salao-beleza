@@ -3,3 +3,12 @@
     margin-left: 2%;
     margin-top: 2%;
   }
+
+  .background-modal-deletar{
+    background-color: #FF6666;
+    color: #FFF;
+  }
+
+  .background-modal-deletar h4{
+    margin-left: 35%;
+  }

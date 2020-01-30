@@ -1,3 +1,6 @@
+<app-mensagem-sucesso></app-mensagem-sucesso>
+<app-mensagem-erro></app-mensagem-erro>
+
 <div class="card">
 
     <div class="card-header">
@@ -53,15 +56,19 @@
 
     <ng-template #modalDelete>
 
-      <div class="modal-header">
-        <h4 class="modal-title pull-center">Confirmação</h4>
+      <div class="modal-header background-modal-deletar"  >
+        <h4 class="modal-title">Confirmação</h4>
       </div>
 
       <div class="modal-body text-center">
-        <p>Deseja realmente deletar esse serviço?</p>
-        <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
-        <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+        <h4>Deseja realmente deletar esse serviço?</h4>
+        <button type="button" class="btn btn-default" style="margin-top: 5%;" (click)="confirm()" >Sim</button>
+        <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="decline()" >Não</button>
       </div>
     </ng-template>
+
+    <app-modal-mensagem-sucesso></app-modal-mensagem-sucesso>
+
+
 
   

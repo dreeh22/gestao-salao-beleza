@@ -4,6 +4,7 @@ import { ServicoService } from './../../services/servico.service';
 import { MensagemSucessoComponent } from './../../mensagens/mensagem-sucesso/mensagem-sucesso.component';
 import { MensagemErroComponent } from 'src/app/mensagens/mensagem-erro/mensagem-erro.component';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ModalMensagemSucessoComponent } from 'src/app/mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
 
 @Component({
   selector: 'app-novo-servico',
@@ -15,6 +16,8 @@ export class NovoServicoComponent implements OnInit {
   @ViewChild(MensagemSucessoComponent, {static: false}) msgSucesso: MensagemSucessoComponent;
 
   @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
+
+  @ViewChild(ModalMensagemSucessoComponent, {static: false}) modalMensagemSucesso: ModalMensagemSucessoComponent;
 
   servico: Servico;
   servicoId: number;
@@ -38,8 +41,9 @@ export class NovoServicoComponent implements OnInit {
 
       this.servicoService.salvarServico(this.servico).subscribe(
         res => {
-                this.msgSucesso.setMsgSucesso('Serviço salvo com sucesso!');
+                //this.msgSucesso.setMsgSucesso('Serviço salvo com sucesso!');
                 this.getServicos();
+                this.modalMensagemSucesso.setMsgSucesso('Serviço salvo com sucesso!');
                },
         err => {
                 this.msgErro.setErro('Ocorreu um erro inesperado...');
@@ -51,17 +55,17 @@ export class NovoServicoComponent implements OnInit {
     } else{
       this.servicoService.editarServico(this.servico).subscribe(
         res => {
-          this.msgSucesso.setMsgSucesso('Serviço editado com sucesso.');
+         
           this.getServicos();
+          this.modalMensagemSucesso.setMsgSucesso('Serviço editado com sucesso.');
           this.router.navigateByUrl('servico/novo');
+          //this.msgSucesso.setMsgSucesso('Serviço editado com sucesso.');
         },
         err => {
           this.msgErro.setErro('Ocorreu um erro ao tentar editar o serviço.'); 
         }
       );
     }
-    
-    
 
   }
 

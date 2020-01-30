@@ -12,6 +12,7 @@ import { ListaServicosComponent } from './servicos/lista-servicos/lista-servicos
 import { MensagemErroComponent } from './mensagens/mensagem-erro/mensagem-erro.component';
 import { MensagemSucessoComponent } from './mensagens/mensagem-sucesso/mensagem-sucesso.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalMensagemSucessoComponent } from './mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MenuComponent,
     ListaServicosComponent,
     MensagemErroComponent,
-    MensagemSucessoComponent
+    MensagemSucessoComponent,
+    ModalMensagemSucessoComponent
   ],
   imports: [
     BrowserModule,
