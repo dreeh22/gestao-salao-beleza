@@ -1,0 +1,11 @@
+.card{
+    width: 96%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+  }
+
+  button{
+      background-color: #FF6666;
+      color:#FFF;
+      width: 10%;
+  }

@@ -11,7 +11,7 @@
 
     <form #form="ngForm">
 
-      <table class="table table-hover" style="text-align: center;" *ngIf="listaRecebida else semListaServico">
+      <table class="table table-hover" style="text-align: center;" *ngIf="listaRecebida.length > 0 else semListaServico">
 
         <thead>
 

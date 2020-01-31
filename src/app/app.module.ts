@@ -14,6 +14,7 @@ import { MensagemSucessoComponent } from './mensagens/mensagem-sucesso/mensagem-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalMensagemSucessoComponent } from './mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ListaServicosComponent,
     MensagemErroComponent,
     MensagemSucessoComponent,
-    ModalMensagemSucessoComponent
+    ModalMensagemSucessoComponent,
+    NovoClienteComponent
   ],
   imports: [
     BrowserModule,

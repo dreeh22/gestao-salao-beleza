@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  API: 'http://localhost:3000/servico'
+  API: 'http://localhost:3000/'
 };
 
 

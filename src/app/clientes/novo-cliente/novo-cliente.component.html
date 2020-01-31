@@ -1,0 +1,56 @@
+<section>
+
+    <h4 class="titulo">Novo Cliente</h4>
+
+    <div class="card">
+
+        <div class="card-header">
+          Dados do Cliente
+        </div>
+
+        <div class="card-body">
+            
+            <form #form="ngForm">
+                
+                <div class="form-group" style="margin-bottom: 2%;">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Informe o nome do cliente">
+                  </div>
+
+                <h4 style="margin-bottom: 2%;">Contatos</h4>
+
+                 <div ngModelGroup="contato" class="form-row">
+
+                    <div class="form-group col-md-3">
+                        <label for="celular">Celular</label>
+                        <input type="text" class="form-control" id="celular" placeholder="(00) 0 0000-0000">
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <label for="telefoneComercial">Telefone Comercial</label>
+                        <input type="text" class="form-control" id="telefoneComercial" placeholder="(00) 0000-0000">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="cliente@contato.com">
+                      </div>
+
+                      <div class="form-group col-md-12">
+                        <label for="outrasInformacoes">Outras Informações</label>
+                        <textarea class="form-control" id="outrasInformacoes" rows="3"></textarea>
+                      </div>
+
+                 </div>
+
+                 <button class="btn btn-dafault">Salvar</button>
+
+                 {{form.value | json}}
+
+            </form>
+
+        </div>
+
+      </div>
+
+</section>
