@@ -13,6 +13,7 @@ import { MensagemErroComponent } from './mensagens/mensagem-erro/mensagem-erro.c
 import { MensagemSucessoComponent } from './mensagens/mensagem-sucesso/mensagem-sucesso.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalMensagemSucessoComponent } from './mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalMensagemSucessoComponent } from './mensagens/modal-mensagem-sucess
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

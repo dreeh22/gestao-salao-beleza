@@ -16,6 +16,7 @@ export class ModalMensagemSucessoComponent implements OnInit {
 
   mensagemErro: string;
 
+  /* Método para chamar um componente que está dentro de um ng-template para poder abrir um modal */
   @ViewChild('modalMensagemSucesso', {static: false}) modalMensagem;
 
   constructor(private modalService: BsModalService) { }
@@ -24,14 +25,17 @@ export class ModalMensagemSucessoComponent implements OnInit {
 
   }
 
+  /* Método para abrir uma modal */
  abrirModal() {
     this.modalRef = this.modalService.show(this.modalMensagem, {class: 'modal-sm-6'});
   }
 
+    /* Método para fechar a modal */
   confirm(){
     this.modalRef.hide();
   }
 
+  /* Método para setar uma mensagem no componente de modal e abrir uma modal que será inserido em outro componente */
   setMsgSucesso(msgSucesso: string){
     this.abrirModal();
     this.mensagemSucesso = msgSucesso;

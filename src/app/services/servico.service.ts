@@ -14,23 +14,28 @@ export class ServicoService {
   constructor(private http: HttpClient) { }
 
 
+  /* Método para salver um serviço */
   salvarServico(servico: Servico){
     return this.http.post(environment.API, servico).pipe(take(1));
   }
 
+  /* Método para retornar todos os serviços cadastrados */
   getServicos(): Observable<Servico[]>{
     return this.http.get<Servico[]>(environment.API);
   }
 
+  /* Método para retornar um serviço de acordo com seu ID */
   getServicoId(id: number){
     return this.http.get<Servico>(`${environment.API}/${id}`);
   }
 
+  /* Método para editar um serviço*/
   editarServico(servico: Servico){
     const url = `${environment.API}/${servico.id}`
     return this.http.put(url, servico).pipe(take(1));
   }
 
+  /* Método para deletar um serviço */
   deletarServico(id:number){
     return this.http.delete(`${environment.API}/${id}`).pipe(take(1));
   }

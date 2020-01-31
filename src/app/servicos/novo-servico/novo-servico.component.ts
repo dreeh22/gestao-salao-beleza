@@ -13,10 +13,12 @@ import { ModalMensagemSucessoComponent } from 'src/app/mensagens/modal-mensagem-
 })
 export class NovoServicoComponent implements OnInit {
 
+  /* Usando o 'ViewChild' para capturar os métodos do componente de mensagem */
   @ViewChild(MensagemSucessoComponent, {static: false}) msgSucesso: MensagemSucessoComponent;
 
   @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
 
+/* Usando o 'ViewChild' para capturar os métodos do componente de mensagem */
   @ViewChild(ModalMensagemSucessoComponent, {static: false}) modalMensagemSucesso: ModalMensagemSucessoComponent;
 
   servico: Servico;
@@ -32,20 +34,26 @@ export class NovoServicoComponent implements OnInit {
     this.servico = new Servico();
     this.servicos;
 
+    /* - Código para capturar o parâmetro da url
+       - Ao verificar a mudança do parâmetro da URL, é chamado um método para buscar o serviço
+         de acordo com o ID capturado 
+    */
     this.route.params.subscribe(params => {this.servicoId = params['id']; this.buscarServicoPorId()} );
   }
 
+  /* Método para salvar ou editar um registro*/
   onSubmit(form){
 
     if(form.id == null){
 
       this.servicoService.salvarServico(this.servico).subscribe(
         res => {
-                //this.msgSucesso.setMsgSucesso('Serviço salvo com sucesso!');
                 this.getServicos();
+                /* Seto a mensagem no método do componente de modal obtido pelo ViewChild */
                 this.modalMensagemSucesso.setMsgSucesso('Serviço salvo com sucesso!');
                },
         err => {
+                /* Seto a mensagem no método do componente de mensagem obtido pelo ViewChild */
                 this.msgErro.setErro('Ocorreu um erro inesperado...');
                 console.error(err)
                }
@@ -59,7 +67,7 @@ export class NovoServicoComponent implements OnInit {
           this.getServicos();
           this.modalMensagemSucesso.setMsgSucesso('Serviço editado com sucesso.');
           this.router.navigateByUrl('servico/novo');
-          //this.msgSucesso.setMsgSucesso('Serviço editado com sucesso.');
+
         },
         err => {
           this.msgErro.setErro('Ocorreu um erro ao tentar editar o serviço.'); 
@@ -69,16 +77,18 @@ export class NovoServicoComponent implements OnInit {
 
   }
 
+  /* Método para buscar um serviço por id */
   buscarServicoPorId(){
     this.servicoService.getServicoId(this.servicoId).subscribe(dados => this.servico = dados);
   }
 
+  /* Método usado para atualizar a página se for preciso */
   refresh() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
-    //this.router.navigate(['servicos/editar'], this.servicoId);
 }
 
+/* Método usado para buscar todos os serviços cadastrados */
 getServicos(){
   this.servicoService.getServicos().subscribe(dados => this.servicos = dados);
 }

@@ -1,12 +1,16 @@
 {
   "servico": [
     {
-      "nomeServico": "Progressiva",
-      "id": 1
-    },
-    {
       "nomeServico": "Corte de Cabelo",
       "id": 2
+    },
+    {
+      "nomeServico": "dasdasdasd",
+      "id": 3
+    },
+    {
+      "nomeServico": "adsasdasd",
+      "id": 4
     }
   ]
 }

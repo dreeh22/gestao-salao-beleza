@@ -3,72 +3,75 @@
 
 <div class="card">
 
-    <div class="card-header">
-      Serviço Cadastrados
-    </div>
-  
-    <div class="card-body">
-  
-      <form #form="ngForm">
-  
-        <table class="table table-hover" style="text-align: center;" *ngIf="listaRecebida; semServico">
+  <div class="card-header">
+    Serviço Cadastrados
+  </div>
 
-            <thead>
-              
-                <tr>
-                    <th scope="col" class="font-weight-bold" style="width: 100px;">ID</th>               
-                    <th scope="col" class="font-weight-bold" style="width: 250px;">Serviço</th>
-                    <th scope="col" class="font-weight-bold" style="width: 100px;">Ações</th>
-                </tr>
-              
-            </thead>
+  <div class="card-body">
 
-            <tbody>
+    <form #form="ngForm">
 
-                <tr *ngFor="let servico of listaRecebida">
+      <table class="table table-hover" style="text-align: center;" *ngIf="listaRecebida else semListaServico">
+
+        <thead>
+
+          <tr>
+            <th scope="col" class="font-weight-bold" style="width: 100px;">ID</th>
+            <th scope="col" class="font-weight-bold" style="width: 250px;">Serviço</th>
+            <th scope="col" class="font-weight-bold" style="width: 100px;">Ações</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let servico of listaRecebida | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; let i = index ">
                     <td>{{servico.id}}</td>
                     
                     <td>{{servico.nomeServico}}</td>
                     
                     <td >
-                        <button class="btn btn-primary" 
-                                style="margin-right: 2%;"
-                                (click)="obterId(servico.id)">Editar</button>
+                        <button class=" btn btn-primary" style="margin-right: 2%;" (click)="obterId(servico.id)">
+            Editar</button>
 
 
-                        <button class="btn btn-danger"
-                                style="margin-right: 2%;"
-                                (click)="obterIdDeletar(servico.id)">Excluir</button>
-                    </td>
-                </tr>
+            <button class="btn btn-danger" style="margin-right: 2%;"
+              (click)="obterIdDeletar(servico.id)">Excluir</button>
+            </td>
+          </tr>
 
-            </tbody>
+        </tbody>
 
-        </table>
+      </table>
 
-        <template #semServico>
-            <span>Nenhum serviço encontrado.</span>
-        </template>
-      </form>
-    
-    </div>
+      <div style="margin-left: 35%; margin-top:2%; width: 25%; ">
+
+        <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"
+          maxSize="5" responsive="true" directionLinks="true" autoHide="true" class="paginacao"></pagination-controls>
+
+      </div>
+
+
+    </form>
+
   </div>
 
-    <ng-template #modalDelete>
+  <ng-template #semListaServico>
+        Nenhum serviço encontrado.
+      </ng-template>
+</div>
 
-      <div class="modal-header background-modal-deletar"  >
-        <h4 class="modal-title">Confirmação</h4>
-      </div>
+<ng-template #modalDelete>
 
-      <div class="modal-body text-center">
-        <h4>Deseja realmente deletar esse serviço?</h4>
-        <button type="button" class="btn btn-default" style="margin-top: 5%;" (click)="confirm()" >Sim</button>
-        <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="decline()" >Não</button>
-      </div>
-    </ng-template>
+  <div class="modal-header background-modal-deletar">
+    <h4 class="modal-title">Confirmação</h4>
+  </div>
 
-    <app-modal-mensagem-sucesso></app-modal-mensagem-sucesso>
+  <div class="modal-body text-center">
+    <h4>Deseja realmente deletar esse serviço?</h4>
+    <button type="button" class="btn btn-default" style="margin-top: 5%;" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="decline()">Não</button>
+  </div>
+</ng-template>
 
-
-
-  
+<app-modal-mensagem-sucesso></app-modal-mensagem-sucesso>
