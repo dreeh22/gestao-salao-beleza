@@ -1,6 +1,18 @@
 <section>
 
-    <h4 class="titulo">Novo Cliente</h4>
+    <div class="row div-row-novo-cliente">
+
+      <div class="col-10" style="padding-left: 0;" >
+        <h4 style="margin-top:10px;">Novo Cliente</h4>
+      </div>
+
+      <div class="col-2" style="padding-right: 0;" >
+        <button class="btn btn-dafault"
+                style="width: 100%;"
+                (click)="redirecionarParaListaCliente()">Listar clientes</button>
+      </div>
+
+    </div>
 
     <div class="card">
 
@@ -9,43 +21,85 @@
         </div>
 
         <div class="card-body">
-            
-            <form #form="ngForm">
-                
-                <div class="form-group" style="margin-bottom: 2%;">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Informe o nome do cliente">
+
+            <form #form="ngForm" (ngSubmit)="salvarCliente(cliente); form.reset()" >
+
+                <div class="form-group">
+                    <label for="nome">Nome<span style="color: #FF0000;">*</span></label>
+                    <input type="text"
+                           class="form-control"
+                           id="nome"
+                           name="nome"
+                           #nome="ngModel"
+                           [(ngModel)]="cliente.nome"
+                           placeholder="Informe o nome do cliente"
+                           required
+                           maxlength="100"
+                           >
+
+                           <div *ngIf="nome.invalid && nome.touched" >
+                              <p>Campo obrigatório</p>
+                          </div>
                   </div>
+
+
 
                 <h4 style="margin-bottom: 2%;">Contatos</h4>
 
                  <div ngModelGroup="contato" class="form-row">
 
                     <div class="form-group col-md-3">
-                        <label for="celular">Celular</label>
-                        <input type="text" class="form-control" id="celular" placeholder="(00) 0 0000-0000">
+                        <label for="celular">Celular<span style="color: #FF0000;">*</span></label>
+                        <input type="text"
+                               class="form-control"
+                               id="celular"
+                               name="celular"
+                               #celular="ngModel"
+                               [(ngModel)]="cliente.contato.celular"
+                               placeholder="(00) 0 0000-0000"
+                               required>
+
+                               <div *ngIf="celular.invalid && celular.touched" >
+                                  <p>Campo obrigatório</p>
+                              </div>
                       </div>
 
                       <div class="form-group col-md-3">
                         <label for="telefoneComercial">Telefone Comercial</label>
-                        <input type="text" class="form-control" id="telefoneComercial" placeholder="(00) 0000-0000">
+                        <input type="text"
+                               class="form-control"
+                               id="telefoneComercial"
+                               name="telefoneComercial"
+                               [(ngModel)]="cliente.contato.telefoneComercial"
+                               placeholder="(00) 0000-0000"
+                               >
                       </div>
 
                       <div class="form-group col-md-6">
                         <label for="email">E-mail</label>
-                        <input type="email" class="form-control" id="email" placeholder="cliente@contato.com">
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               name="email"
+                               [(ngModel)]="cliente.contato.email"
+                               placeholder="cliente@contato.com"
+                               >
                       </div>
 
                       <div class="form-group col-md-12">
                         <label for="outrasInformacoes">Outras Informações</label>
-                        <textarea class="form-control" id="outrasInformacoes" rows="3"></textarea>
+                        <textarea class="form-control"
+                        id="outrasInformacoes"
+                        name="outrasInformacoes"
+                        [(ngModel)]="cliente.contato.outrasInformacoes"
+                        rows="3"></textarea>
                       </div>
 
                  </div>
 
-                 <button class="btn btn-dafault">Salvar</button>
+                 <button class="btn btn-dafault" [disabled]="form.invalid">Salvar</button>
 
-                 {{form.value | json}}
+                 <!--{{form.value | json}}-->
 
             </form>
 
@@ -54,3 +108,8 @@
       </div>
 
 </section>
+
+<app-alerta-modal-sucesso></app-alerta-modal-sucesso>
+
+
+

@@ -15,6 +15,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalMensagemSucessoComponent } from './mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.component';
+import { AlertaModalSucessoComponent } from './alertas-compartilhados/alerta-modal-sucesso/alerta-modal-sucesso.component';
+import { ListarClientesComponent } from './clientes/listar-clientes/listar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.compo
     MensagemErroComponent,
     MensagemSucessoComponent,
     ModalMensagemSucessoComponent,
-    NovoClienteComponent
+    NovoClienteComponent,
+    AlertaModalSucessoComponent,
+    ListarClientesComponent
   ],
   imports: [
     BrowserModule,

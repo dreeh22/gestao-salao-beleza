@@ -1,6 +1,19 @@
 <nav class="menu">
-    <ul>
-        <li><a routerLink="servico/novo">Novo Serviço</a></li>
-        <li><a routerLink="cliente/novo">Novo Cliente</a></li>
-    </ul>
+
+  <div class="dropdown">
+    <button class="dropbtn">Cliente</button>
+    <div class="dropdown-content">
+      <a routerLink="cliente/novo">Novo Cliente</a>
+    <a routerLink="cliente/lista">Listar Clientes</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn">Servico</button>
+    <div class="dropdown-content">
+      <a routerLink="servico/novo">Novo Serviço</a>
+    </div>
+  </div>
+
+
 </nav>

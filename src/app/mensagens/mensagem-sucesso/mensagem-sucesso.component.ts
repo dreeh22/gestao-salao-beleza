@@ -17,7 +17,7 @@ export class MensagemSucessoComponent implements OnInit {
   /* Método para setar uma mensagem no componente de alerta que será inserido em outro componente */
   setMsgSucesso(msgSucesso: string, tempo: number = 5000){
     this.msgSucesso = msgSucesso;
-    setTimeout(() => {this.msgSucesso = null}, tempo);
+    setTimeout(() => {this.msgSucesso = null }, tempo);
   }
 
 }

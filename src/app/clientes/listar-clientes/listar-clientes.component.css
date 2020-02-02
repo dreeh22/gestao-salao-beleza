@@ -1,0 +1,22 @@
+.card{
+  width: 100%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  float: left;
+}
+
+.bloco{
+  display: flex;
+
+}
+
+.row.retirarMargem {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.informacoesComplementares{
+  width: 350px;
+}
+
+

@@ -1,0 +1,78 @@
+<h4 class="titulo">Clientes</h4>
+
+<section class="row mx-0">
+
+
+        <div class="col-{{tamanhoGridClientes}} bloco pl-0 pr-{{paddindGrid}}">
+
+          <div class="card" style="margin-left: 2%;" >
+
+              <div class="card-header">
+                Clientes Cadastrados
+              </div>
+
+              <div class="card-body">
+
+                  <table class="table table-hover" style="text-align: center;">
+
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Nome</th>
+                              <th>Celular</th>
+                              <th style="width: 10%;">Informações Complementares</th>
+                              <th>Ações</th>
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                          <tr *ngFor="let cliente of clientes" >
+                              <td>{{cliente.id}}</td>
+                              <td>{{cliente.nome}}</td>
+                              <td>{{cliente.contato.celular}}</td>
+                              <td><button type="button" class="btn btn-link" (click)="habilitarBlocoInformacoes()">Visualizar</button></td>
+                              <td>
+
+                                  <button class=" btn btn-primary" style="margin-right: 2%;">
+                                    Editar
+                                  </button>
+
+                                  <button class="btn btn-danger" style="margin-right: 2%;">
+                                    Excluir
+                                  </button>
+                              </td>
+
+                          </tr>
+                      </tbody>
+
+                  </table>
+
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-3 pl-0 " *ngIf="infoComplementaresHabilitado"  >
+
+          <div class="card">
+
+            <div class="card-header">
+              Informações Complementares
+            </div>
+
+            <div class="card-body">
+
+              <p class="card-text">Telefone Comencial:</p>
+
+              <p class="card-text">E-mail:</p>
+
+              <p class="card-text">Informações Adicionais:</p>
+
+            </div>
+          </div>
+
+        </div>
+
+</section>
+

@@ -15,7 +15,7 @@ export class ServicoService {
 
 
   /* Método para salver um serviço */
-  salvarServico(servico: Servico){
+  salvarServico(servico: Servico) {
     return this.http.post(`${environment.API}servico`, servico).pipe(take(1));
   }
 

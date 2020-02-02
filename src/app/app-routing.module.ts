@@ -1,3 +1,4 @@
+import { ListarClientesComponent } from './clientes/listar-clientes/listar-clientes.component';
 import { NovoServicoComponent } from './servicos/novo-servico/novo-servico.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,8 +11,8 @@ const routes: Routes = [
   {path: 'servico/novo', component: NovoServicoComponent},
   {path: 'servico/editar/:id', component: NovoServicoComponent},
 
-  {path: 'cliente/novo', component: NovoClienteComponent}
-  
+  {path: 'cliente/novo', component: NovoClienteComponent},
+  {path: 'cliente/lista', component: ListarClientesComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes) ],

@@ -27,7 +27,7 @@ export class NovoServicoComponent implements OnInit {
 
 
   constructor(private servicoService: ServicoService,
-              private route: ActivatedRoute, 
+              private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit() {
@@ -36,15 +36,15 @@ export class NovoServicoComponent implements OnInit {
 
     /* - Código para capturar o parâmetro da url
        - Ao verificar a mudança do parâmetro da URL, é chamado um método para buscar o serviço
-         de acordo com o ID capturado 
+         de acordo com o ID capturado
     */
     this.route.params.subscribe(params => {this.servicoId = params['id']; this.buscarServicoPorId()} );
   }
 
   /* Método para salvar ou editar um registro*/
-  onSubmit(form){
+  onSubmit(form) {
 
-    if(form.id == null){
+    if (form.id == null) {
 
       this.servicoService.salvarServico(this.servico).subscribe(
         res => {
@@ -55,22 +55,22 @@ export class NovoServicoComponent implements OnInit {
         err => {
                 /* Seto a mensagem no método do componente de mensagem obtido pelo ViewChild */
                 this.msgErro.setErro('Ocorreu um erro inesperado...');
-                console.error(err)
+                console.error(err);
                }
-  
+
       );
 
-    } else{
+    } else {
       this.servicoService.editarServico(this.servico).subscribe(
         res => {
-         
+
           this.getServicos();
           this.modalMensagemSucesso.setMsgSucesso('Serviço editado com sucesso.');
           this.router.navigateByUrl('servico/novo');
 
         },
         err => {
-          this.msgErro.setErro('Ocorreu um erro ao tentar editar o serviço.'); 
+          this.msgErro.setErro('Ocorreu um erro ao tentar editar o serviço.');
         }
       );
     }
@@ -78,7 +78,7 @@ export class NovoServicoComponent implements OnInit {
   }
 
   /* Método para buscar um serviço por id */
-  buscarServicoPorId(){
+  buscarServicoPorId() {
     this.servicoService.getServicoId(this.servicoId).subscribe(dados => this.servico = dados);
   }
 
@@ -89,7 +89,7 @@ export class NovoServicoComponent implements OnInit {
 }
 
 /* Método usado para buscar todos os serviços cadastrados */
-getServicos(){
+getServicos() {
   this.servicoService.getServicos().subscribe(dados => this.servicos = dados);
 }
 

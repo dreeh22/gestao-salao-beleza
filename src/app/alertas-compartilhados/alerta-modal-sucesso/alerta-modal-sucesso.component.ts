@@ -1,14 +1,12 @@
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ServicoService } from './../../services/servico.service';
-
 @Component({
-  selector: 'app-modal-mensagem-sucesso',
-  templateUrl: './modal-mensagem-sucesso.component.html',
-  styleUrls: ['./modal-mensagem-sucesso.component.css']
+  selector: 'app-alerta-modal-sucesso',
+  templateUrl: './alerta-modal-sucesso.component.html',
+  styleUrls: ['./alerta-modal-sucesso.component.css']
 })
-export class ModalMensagemSucessoComponent implements OnInit {
+export class AlertaModalSucessoComponent implements OnInit {
 
   modalRef: BsModalRef;
 
@@ -40,6 +38,5 @@ export class ModalMensagemSucessoComponent implements OnInit {
     this.abrirModal();
     this.mensagemSucesso = msgSucesso;
   }
-
 
 }
