@@ -24,6 +24,8 @@
 
             <form #form="ngForm" (ngSubmit)="salvarCliente(cliente); form.reset()" >
 
+              <input type="hidden" class="form-control" name="id" [(ngModel)]="cliente.id" >
+
                 <div class="form-group">
                     <label for="nome">Nome<span style="color: #FF0000;">*</span></label>
                     <input type="text"

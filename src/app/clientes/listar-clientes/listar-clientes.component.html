@@ -1,5 +1,8 @@
 <h4 class="titulo">Clientes</h4>
 
+<app-mensagem-sucesso></app-mensagem-sucesso>
+<app-mensagem-erro></app-mensagem-erro>
+
 <section class="row mx-0">
 
 
@@ -13,7 +16,7 @@
 
               <div class="card-body">
 
-                  <table class="table table-hover" style="text-align: center;">
+                  <table class="table table-hover" style="text-align: center;" *ngIf="clientes.length > 0">
 
                       <thead>
                           <tr>
@@ -30,14 +33,14 @@
                               <td>{{cliente.id}}</td>
                               <td>{{cliente.nome}}</td>
                               <td>{{cliente.contato.celular}}</td>
-                              <td><button type="button" class="btn btn-link" (click)="habilitarBlocoInformacoes()">Visualizar</button></td>
+                              <td><button type="button" class="btn btn-link" (click)="habilitarBlocoInformacoes(cliente.id)">Visualizar</button></td>
                               <td>
 
-                                  <button class=" btn btn-primary" style="margin-right: 2%;">
+                                  <button class=" btn btn-primary" style="margin-right: 2%;" (click)="redirecionarClienteEdicao(cliente)">
                                     Editar
                                   </button>
 
-                                  <button class="btn btn-danger" style="margin-right: 2%;">
+                                  <button class="btn btn-danger" style="margin-right: 2%;" (click)="abrirModal(cliente.id)">
                                     Excluir
                                   </button>
                               </td>
@@ -46,6 +49,10 @@
                       </tbody>
 
                   </table>
+
+                  <div *ngIf="clientes.length <= 0">
+                      Nenhum cliente encontrado
+                  </div>
 
               </div>
 
@@ -63,16 +70,29 @@
 
             <div class="card-body">
 
-              <p class="card-text">Telefone Comencial:</p>
+              <p class="card-text"><span style="font-weight: bold;">Telefone Comencial: </span>{{cliente.contato.telefoneComercial}}</p>
 
-              <p class="card-text">E-mail:</p>
+              <p class="card-text"><span style="font-weight: bold;">E-mail: </span>{{cliente.contato.email}}</p>
 
-              <p class="card-text">Informações Adicionais:</p>
+              <p class="card-text"><span style="font-weight: bold;">Informações Adicionais: </span>{{cliente.contato.outrasInformacoes}}</p>
 
             </div>
           </div>
 
         </div>
+
+        <ng-template #modalDeletar>
+
+          <div class="modal-header bg-danger " style="display: flex; justify-content: center;">
+            <h4 class="modal-title text-light"  >Confirmação</h4>
+          </div>
+
+          <div class="modal-body text-center">
+            <p>Tem certeza que deseja deletar esse cliente?</p>
+            <button type="button" class="btn btn-default" (click)="confirmarcao()">Sim</button>
+            <button type="button" class="btn btn-primary" (click)="fecharModalDeletar()">Não</button>
+          </div>
+        </ng-template>       
 
 </section>
 

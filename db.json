@@ -1,35 +1,40 @@
 {
   "servico": [
     {
-      "nomeServico": "Corte de Cabelo",
+      "nomeServico": "Corte de cabelo",
       "id": 1
     }
   ],
   "cliente": [
     {
       "contato": {
-        "celular": "61 9 9588-9257",
+        "celular": "61 9 9394-2970",
         "telefoneComercial": "61 3331-3880",
-        "email": "andre@gmail.com",
-        "outrasInformacoes": null
+        "email": "rafaela@gmail.com",
+        "outrasInformacoes": "Teste de edição com a inclusão de alguns campos. "
       },
-      "nome": "André de Jesus Araújo",
-      "id": 1
-    },
-    {
-      "contato": {
-        "celular": "61 9 9394-2970"
-      },
-      "nome": "Rafaela de Jesus",
+      "nome": "Rafaela de Jesus Araújo",
       "id": 2
     },
     {
       "contato": {
         "celular": "61 9 9858-5285",
-        "email": "valeria@gmail.com"
+        "email": "valeria@gmail.com",
+        "telefoneComercial": "61 3331-3890",
+        "outrasInformacoes": "Adicionado novas informações para o teste de edição."
       },
       "nome": "Valeria de Araujo",
       "id": 3
+    },
+    {
+      "contato": {
+        "celular": "61 9 9885-5682",
+        "telefoneComercial": "61 3331-3880",
+        "email": "marcos@gmail.com",
+        "outrasInformacoes": "Cliente solicitou serviço para o dia 13. "
+      },
+      "nome": "Marcos de Oliveira",
+      "id": 4
     }
   ]
 }

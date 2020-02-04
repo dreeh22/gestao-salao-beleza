@@ -1,11 +1,11 @@
 <ng-template #modalMensagemSucesso>
 
-  <div class="modal-header bg-success text-center">
-      <h4 class="modal-title text-light" style="margin-left:37%;">Confirmar</h4>
+  <div class="modal-header bg-success" style="display: flex; justify-content: center;">
+      <h4 class="modal-title text-light">Confirmação</h4>
     </div>
 
   <div class="modal-body text-center">
-    <h4>{{mensagemSucesso}}</h4>
+    <p>{{mensagemSucesso}}</p>
     <button type="button" class="btn btn-default text-light" style="margin-top: 5%;"  (click)="confirm()" style="margin-top:2%;">OK</button>
   </div>
 

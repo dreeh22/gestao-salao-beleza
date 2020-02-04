@@ -20,4 +20,17 @@ export class ClienteService {
     return this.http.get<Cliente[]>(`${environment.API}cliente`);
   }
 
+  consultaClientePorId(id: number){
+      return this.http.get<Cliente>(`${environment.API}cliente/${id}`);
+  }
+
+  editarCliente(cliente: Cliente){
+    const url = `${environment.API}cliente/${cliente.id}`;
+    return this.http.put(url, cliente).pipe(take(1));
+  }
+
+  deletarCliente(id: number){
+    return this.http.delete(`${environment.API}cliente/${id}`).pipe(take(1));
+  }
+
 }

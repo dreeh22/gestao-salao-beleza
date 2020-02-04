@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'servico/editar/:id', component: NovoServicoComponent},
 
   {path: 'cliente/novo', component: NovoClienteComponent},
-  {path: 'cliente/lista', component: ListarClientesComponent}
+  {path: 'cliente/lista', component: ListarClientesComponent},
+  {path: 'cliente/editar/:id', component: NovoClienteComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes) ],
