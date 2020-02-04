@@ -3,6 +3,7 @@ import { NovoServicoComponent } from './servicos/novo-servico/novo-servico.compo
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.component';
+import { ServicosRealizadosComponent } from './servicos/servicos-realizados/servicos-realizados.component';
 
 
 const routes: Routes = [
@@ -13,10 +14,11 @@ const routes: Routes = [
 
   {path: 'cliente/novo', component: NovoClienteComponent},
   {path: 'cliente/lista', component: ListarClientesComponent},
-  {path: 'cliente/editar/:id', component: NovoClienteComponent}
+  {path: 'cliente/editar/:id', component: NovoClienteComponent},
+  {path: 'servicos-realizados/novo', component: ServicosRealizadosComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes) ],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

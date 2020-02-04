@@ -1,0 +1,62 @@
+<section>
+
+    <div class="titulo">
+        <h4 style="margin-top:10px;">Novo Serviço Realizado</h4>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+          Serviço
+        </div>
+    
+        <div class="card-body">
+    
+            <form #form="ngForm">
+                
+                <div class="form-group">
+
+                    <label for="nomeCliente">Cliente</label>
+
+                    <input  class="form-control col-6" id="nomeCliente" list="listaCliente" placeholder="Clique para selecionar um cliente">
+                        <datalist id="listaCliente">
+                            <option *ngFor="let cliente of clientes" value="{{cliente.nome}}">{{cliente.contato.celular}}</option>
+                        </datalist>
+                  </div>
+
+                  <div class="form-row" style="margin-top: 3%;">
+
+                        <div class="form-group col-md-6">
+
+                            <label for="servico">Serviço</label>
+
+                            <input  class="form-control" id="servico" list="listaServico" placeholder="Clique para selecionar um serviço">
+                                <datalist id="listaServico">
+                                    <option *ngFor="let servico of servicos" value="{{servico.nomeServico}}" ></option> 
+                            </datalist>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="valorServico">Valor do Serviço</label>
+                            <input type="number" step="any" min="0" class="form-control" id="valorServico" name="servicoValor" placeholder="0.00">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="data">Data de realização do serviço</label>
+                            <input type="date" class="form-control" id="data" name="data" placeholder="">
+                        </div>
+
+                </div>
+
+                    <button class="btn ptn-default" style="background-color: #FF6666; color: #fff;  margin-top: 31px;">
+                        Salvar
+                    </button>
+
+            </form>
+    
+        </div>
+    
+      </div>
+    
+
+</section>

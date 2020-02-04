@@ -3,6 +3,10 @@
     {
       "nomeServico": "Corte de cabelo",
       "id": 1
+    },
+    {
+      "nomeServico": "Progressiva",
+      "id": 2
     }
   ],
   "cliente": [

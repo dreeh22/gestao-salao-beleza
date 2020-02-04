@@ -17,6 +17,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.component';
 import { AlertaModalSucessoComponent } from './alertas-compartilhados/alerta-modal-sucesso/alerta-modal-sucesso.component';
 import { ListarClientesComponent } from './clientes/listar-clientes/listar-clientes.component';
+import { ServicosRealizadosComponent } from './servicos/servicos-realizados/servicos-realizados.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ListarClientesComponent } from './clientes/listar-clientes/listar-clien
     ModalMensagemSucessoComponent,
     NovoClienteComponent,
     AlertaModalSucessoComponent,
-    ListarClientesComponent
+    ListarClientesComponent,
+    ServicosRealizadosComponent
   ],
   imports: [
     BrowserModule,
