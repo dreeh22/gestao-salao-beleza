@@ -18,6 +18,8 @@ import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.compo
 import { AlertaModalSucessoComponent } from './alertas-compartilhados/alerta-modal-sucesso/alerta-modal-sucesso.component';
 import { ListarClientesComponent } from './clientes/listar-clientes/listar-clientes.component';
 import { ServicosRealizadosComponent } from './servicos/servicos-realizados/servicos-realizados.component';
+import { ListaServicosRealizadosComponent } from './servicos/lista-servicos-realizados/lista-servicos-realizados.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ServicosRealizadosComponent } from './servicos/servicos-realizados/serv
     NovoClienteComponent,
     AlertaModalSucessoComponent,
     ListarClientesComponent,
-    ServicosRealizadosComponent
+    ServicosRealizadosComponent,
+    ListaServicosRealizadosComponent
   ],
   imports: [
     BrowserModule,

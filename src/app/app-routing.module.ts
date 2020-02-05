@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.component';
 import { ServicosRealizadosComponent } from './servicos/servicos-realizados/servicos-realizados.component';
+import { ListaServicosRealizadosComponent } from './servicos/lista-servicos-realizados/lista-servicos-realizados.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'cliente/novo', component: NovoClienteComponent},
   {path: 'cliente/lista', component: ListarClientesComponent},
   {path: 'cliente/editar/:id', component: NovoClienteComponent},
-  {path: 'servicos-realizados/novo', component: ServicosRealizadosComponent}
+  {path: 'servico-realizado/novo', component: ServicosRealizadosComponent},
+  {path: 'lista-servicos-realizados', component: ListaServicosRealizadosComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes) ],

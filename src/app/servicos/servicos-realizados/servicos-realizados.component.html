@@ -4,6 +4,8 @@
         <h4 style="margin-top:10px;">Novo Serviço Realizado</h4>
     </div>
 
+    <app-mensagem-erro></app-mensagem-erro>
+
     <div class="card">
 
         <div class="card-header">
@@ -12,16 +14,29 @@
     
         <div class="card-body">
     
-            <form #form="ngForm">
+            <form #form="ngForm" (ngSubmit)="salvarServicoRealizado(servicoRealizado); form.reset()">
                 
                 <div class="form-group">
 
-                    <label for="nomeCliente">Cliente</label>
+                    <label for="nomeCliente">Cliente*</label>
 
-                    <input  class="form-control col-6" id="nomeCliente" list="listaCliente" placeholder="Clique para selecionar um cliente">
-                        <datalist id="listaCliente">
+                    <input  class="form-control col-6" 
+                            id="nomeCliente" 
+                            list="listaCliente" 
+                            name="cliente" 
+                            #nomeCliente="ngModel" 
+                            [(ngModel)]="servicoRealizado.nomeCliente" 
+                            placeholder="Clique para selecionar um cliente"
+                            required >
+                        
+                    <datalist id="listaCliente">
                             <option *ngFor="let cliente of clientes" value="{{cliente.nome}}">{{cliente.contato.celular}}</option>
-                        </datalist>
+                    </datalist>
+
+                        <div *ngIf="nomeCliente.invalid && nomeCliente.touched">
+                            <span>Campo obrigatório.</span>
+                        </div>
+
                   </div>
 
                   <div class="form-row" style="margin-top: 3%;">
@@ -30,25 +45,64 @@
 
                             <label for="servico">Serviço</label>
 
-                            <input  class="form-control" id="servico" list="listaServico" placeholder="Clique para selecionar um serviço">
+                            <input  class="form-control" 
+                                    id="servico" 
+                                    list="listaServico" 
+                                    name="servicoRealizado" 
+                                    [(ngModel)]="servicoRealizado.nomeServico" 
+                                    placeholder="Clique para selecionar um serviço"
+                                    #servico="ngModel"
+                                    required>
+
                                 <datalist id="listaServico">
                                     <option *ngFor="let servico of servicos" value="{{servico.nomeServico}}" ></option> 
-                            </datalist>
+                                </datalist>
+
+                            <div *ngIf="servico.invalid && servico.touched">
+                                <span>Campo obrigatório.</span>
+                            </div>
+
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="valorServico">Valor do Serviço</label>
-                            <input type="number" step="any" min="0" class="form-control" id="valorServico" name="servicoValor" placeholder="0.00">
+                            <input type="number" 
+                                   step="any" 
+                                   min="0" 
+                                   class="form-control" 
+                                   id="valorServico" 
+                                   name="servicoValor"
+                                   #valorServico="ngModel" 
+                                   [(ngModel)]="servicoRealizado.valorServico" 
+                                   placeholder="0.00"
+                                   required>
+
+                                <div *ngIf="valorServico.invalid && valorServico.touched">
+                                    <span>Campo obrigatório.</span>
+                                </div>
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="data">Data de realização do serviço</label>
-                            <input type="date" class="form-control" id="data" name="data" placeholder="">
+                            <input type="date" 
+                                   class="form-control" 
+                                   id="data" 
+                                   name="data" 
+                                   #dataServico="ngModel"
+                                   [(ngModel)]="servicoRealizado.dataServico" 
+                                   required>
+
+                                <div *ngIf="dataServico.invalid && dataServico.touched">
+                                    <span>Campo obrigatório.</span>
+                                </div>
                         </div>
 
                 </div>
 
-                    <button class="btn ptn-default" style="background-color: #FF6666; color: #fff;  margin-top: 31px;">
+                    <button type="submit" 
+                            class="btn ptn-default" 
+                            [disabled]="form.invalid"
+                            style="background-color: #FF6666; color: #fff;  margin-top: 31px;">
                         Salvar
                     </button>
 
@@ -57,6 +111,8 @@
         </div>
     
       </div>
+
+      <app-alerta-modal-sucesso></app-alerta-modal-sucesso>
     
 
 </section>

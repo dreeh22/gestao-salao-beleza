@@ -3,3 +3,11 @@
     margin-left: 2%;
     margin-bottom: 2%;
   }
+
+.ng-invalid.ng-touched:not(form){
+      border: 1px solid #FF0000;
+  }
+
+  .ng-invalid.ng-touched span{
+    color: #FF0000;
+}
