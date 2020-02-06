@@ -7,3 +7,10 @@ export class ServicoRealizado {
     dataServico: Date;
     
 }
+
+export class consultarPorData {
+
+    dataInicio: Date;
+    dataFim: Date;
+    
+}

@@ -93,6 +93,13 @@
       "valorServico": 0,
       "dataServico": "2020-02-05",
       "id": 8
+    },
+    {
+      "nomeCliente": "Rafaela de Jesus Araújo",
+      "nomeServico": "Progressiva",
+      "valorServico": 50.5,
+      "dataServico": "2020-01-01",
+      "id": 9
     }
   ]
 }

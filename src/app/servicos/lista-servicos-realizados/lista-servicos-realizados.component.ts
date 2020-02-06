@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicosExecutadosService } from 'src/app/services/servicos-executados.service';
+import { ServicoRealizado } from 'src/app/models/servico-realizado';
 
 @Component({
   selector: 'app-lista-servicos-realizados',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaServicosRealizadosComponent implements OnInit {
 
-  constructor() { }
+  servicoRealizado: ServicoRealizado;
+
+  constructor(private servicoRealizadoService: ServicosExecutadosService) { }
 
   ngOnInit() {
+
   }
+
+  consultarServicosPorData(){
+
+  }
+
 
 }

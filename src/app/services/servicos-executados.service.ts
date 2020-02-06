@@ -4,6 +4,7 @@ import { Cliente } from './../models/cliente';
 import { take } from 'rxjs/Operators';
 import { environment } from './../../environments/environment';
 import { ServicoRealizado } from './../models/servico-realizado';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,12 @@ export class ServicosExecutadosService {
   }
 
   salvarServicoRealizado(servicoRealizado: ServicoRealizado){
-    console.log('RECEBIDO: ', servicoRealizado); 
     return this.http.post(`${environment.API}servico-realizado`, servicoRealizado).pipe(take(1));
+  }
+
+  retornarPorData(dataInicio: Date, dataFim: Date){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?dataServico=${dataInicio}&${dataFim}`);
+
   }
 
 
