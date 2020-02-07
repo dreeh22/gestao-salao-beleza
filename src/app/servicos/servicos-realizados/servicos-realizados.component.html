@@ -16,6 +16,12 @@
     
             <form #form="ngForm" (ngSubmit)="salvarServicoRealizado(servicoRealizado); form.reset()">
                 
+
+                <input  class="form-control" 
+                id="id" 
+                name="id" 
+                [(ngModel)]="servicoRealizado.id">
+
                 <div class="form-group">
 
                     <label for="nomeCliente">Cliente*</label>

@@ -4,10 +4,9 @@ import { ServicosExecutadosService } from 'src/app/services/servicos-executados.
 import { Servico } from 'src/app/models/servico';
 import { ServicoService } from 'src/app/services/servico.service';
 import { ServicoRealizado } from 'src/app/models/servico-realizado';
-import { ModalMensagemSucessoComponent } from './../../mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MensagemErroComponent } from 'src/app/mensagens/mensagem-erro/mensagem-erro.component';
 import { AlertaModalSucessoComponent } from './../../alertas-compartilhados/alerta-modal-sucesso/alerta-modal-sucesso.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-servicos-realizados',
@@ -26,7 +25,9 @@ export class ServicosRealizadosComponent implements OnInit {
   @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
 
   constructor(private serviceServicosRealizados: ServicosExecutadosService,
-              private servicoService: ServicoService) { }
+              private servicoService: ServicoService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -34,19 +35,45 @@ export class ServicosRealizadosComponent implements OnInit {
 
       this.servicoService.getServicos().subscribe(res => this.servicos = res);
 
+      this.route.params.subscribe(params => this.servicoRealizado.id = params['id'])
+      this.consultarServicoPorId();
+
   }
 
 
   salvarServicoRealizado(form){
-      this.serviceServicosRealizados.salvarServicoRealizado(this.servicoRealizado).subscribe(
-        res => {
-          this.modalMsgSucesso.setMsgSucesso('Serviço realizado cadastrado com sucesso! ');
-        },
 
-        err => {
-          this.msgErro.setErro('Ocorreu um erro ao tentar cadastrar um serviço realizado.');
-        }
-      );
+      if(this.servicoRealizado === null){
+
+          this.serviceServicosRealizados.salvarServicoRealizado(this.servicoRealizado).subscribe(
+            res => {
+              this.modalMsgSucesso.setMsgSucesso('Serviço realizado cadastrado com sucesso! ');
+            },
+    
+            err => {
+              this.msgErro.setErro('Ocorreu um erro ao tentar cadastrar um serviço realizado.');
+            }
+          );
+
+      }else {
+        this.serviceServicosRealizados.editarServicoRealizado(this.servicoRealizado).subscribe(
+          res => {
+            this.modalMsgSucesso.setMsgSucesso('Serviço realizado editado com sucesso! ');
+            this.router.navigateByUrl('lista-servicos-realizados');
+          },
+          err => {
+            this.msgErro.setErro('Ocorreu um erro ao tentar cadastrar um serviço realizado.');
+          }
+        );
+      }
+
+      
+  }
+
+  consultarServicoPorId(){
+    this.serviceServicosRealizados.getServicoPorId(this.servicoRealizado.id).subscribe(
+      res => this.servicoRealizado = res
+    );
   }
 
 }

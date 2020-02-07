@@ -8,7 +8,7 @@ export class ServicoRealizado {
     
 }
 
-export class consultarPorData {
+export class ConsultarPorData {
 
     dataInicio: Date;
     dataFim: Date;

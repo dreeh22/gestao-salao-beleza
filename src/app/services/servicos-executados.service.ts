@@ -21,9 +21,26 @@ export class ServicosExecutadosService {
     return this.http.post(`${environment.API}servico-realizado`, servicoRealizado).pipe(take(1));
   }
 
-  retornarPorData(dataInicio: Date, dataFim: Date){
-    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?dataServico=${dataInicio}&${dataFim}`);
+  listarServicosRealizados(){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado`);
+  }
 
+  retornarPorData(dataInicio: Date, dataFim: Date){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?dataServico=${dataInicio}&dataServico=${dataFim}`);
+
+  }
+
+  getServicoPorId(id: number){
+    return this.http.get<ServicoRealizado>(`${environment.API}servico-realizado/${id}`);
+  }
+
+  editarServicoRealizado(servicoRealizado: ServicoRealizado){
+    const url = `${environment.API}servico-realizado/${servicoRealizado.id}`;
+    return this.http.put(url, servicoRealizado).pipe(take(1));
+  }
+
+  deletarServicoRealizado(id: number){
+    return this.http.delete(`${environment.API}servico-realizado/${id}`);
   }
 
 

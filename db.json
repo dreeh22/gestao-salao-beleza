@@ -58,48 +58,10 @@
     },
     {
       "nomeCliente": "Marcos de Oliveira",
-      "nomeServico": "Progressiva",
-      "valorServico": 50,
-      "dataServico": "2020-02-03",
-      "id": 3
-    },
-    {
-      "nomeCliente": "Marcos de Oliveira",
       "nomeServico": "Corte de cabelo",
       "valorServico": 25,
       "dataServico": "2020-02-04",
       "id": 4
-    },
-    {
-      "nomeCliente": "Valeria de Araujo",
-      "nomeServico": "Progressiva",
-      "valorServico": 100,
-      "dataServico": "2020-02-01",
-      "id": 5
-    },
-    {
-      "nomeCliente": "Rafaela de Jesus Araújo",
-      "nomeServico": "Corte de cabelo",
-      "id": 6
-    },
-    {
-      "nomeCliente": "Rafaela de Jesus Araújo",
-      "nomeServico": "Progressiva",
-      "id": 7
-    },
-    {
-      "nomeCliente": "Rafaela de Jesus Araújo",
-      "nomeServico": "Progressiva",
-      "valorServico": 0,
-      "dataServico": "2020-02-05",
-      "id": 8
-    },
-    {
-      "nomeCliente": "Rafaela de Jesus Araújo",
-      "nomeServico": "Progressiva",
-      "valorServico": 50.5,
-      "dataServico": "2020-01-01",
-      "id": 9
     }
   ]
 }

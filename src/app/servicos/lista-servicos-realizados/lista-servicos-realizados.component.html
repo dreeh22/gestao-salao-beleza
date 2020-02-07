@@ -1,5 +1,8 @@
 <h4 class="titulo">Consultar Serviços Realizados</h4>
 
+<app-mensagem-sucesso></app-mensagem-sucesso>
+<app-mensagem-erro></app-mensagem-erro>
+
 <section class="col-12">
 
     <div class="card" style="margin-left: 1%; margin-right: 1%;">
@@ -12,18 +15,18 @@
 
             <h6 style="margin-bottom: 2%;">Consultar serviços por período</h6>
 
-            <form #form="ngForm">
+            <form #form="ngForm" (ngSubmit)="consultarServicosPorData(form); form.reset()">
 
                 <div class="row mb-4">
 
-                    <div class="col">
+                    <div class="form-group col">
                         <label for="dataInicio">Data de Inicio</label>
-                        <input type="date" id="dataInicio" class="form-control">
+                        <input type="date" id="dataInicio" name="dataInicio" [(ngModel)]="consultarPorData.dataInicio" class="form-control">
                     </div>
 
-                    <div class="col">
+                    <div class="form-group col">
                         <label for="dataFim">Data Fim</label>
-                        <input type="date" id="dataFim" class="form-control">
+                        <input type="date" id="dataFim" name="dataFim" [(ngModel)]="consultarPorData.dataFim" class="form-control">
                     </div>
 
                 </div>
@@ -47,10 +50,11 @@
 
         <div class="card-body">
 
-            <table class="table table-hover">
+            <table class="table table-hover text-center">
 
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Cliente</th>
                         <th>Serviço realizado</th>
                         <th>Valor do serviço</th>
@@ -60,12 +64,16 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let servicoRealizado of servicoRealizados">
+                        <td>{{servicoRealizado.id}}</td>
+                        <td>{{servicoRealizado.nomeCliente}}</td>
+                        <td>{{servicoRealizado.nomeServico}}</td>
+                        <td>{{servicoRealizado.valorServico}}</td>
+                        <td>{{servicoRealizado.dataServico}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary mr-2" (click)="capiturarIdServico(servicoRealizado.id)">Editar</button>
+                            <button type="button" class="btn btn-danger" (click)="abrirModalDelete(servicoRealizado.id)">excluir</button>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -76,3 +84,16 @@
     </div>
 
 </section>
+
+<ng-template #modalDelete>
+
+    <div class="modal-header background-modal-deletar">
+      <h4 class="modal-title">Confirmação</h4>
+    </div>
+  
+    <div class="modal-body text-center">
+      <h4>Deseja realmente deletar esse serviço?</h4>
+      <button type="button" class="btn btn-default" style="margin-top: 5%;" (click)="confirm()">Sim</button>
+      <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="decline()">Não</button>
+    </div>
+  </ng-template>
