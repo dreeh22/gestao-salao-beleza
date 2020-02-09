@@ -16,16 +16,16 @@
   <div class="card-body">
 
     <form #form="ngForm" (ngSubmit)="onSubmit(servico); form.reset()">
-      
+
       <input type="hidden" name="id" [(ngModel)]="servico.id" >
 
       <div class="form-group">
         <label for="nomeServico" label-control>Nome do Serviço</label>
         <input type="text" class="form-control"
-                           id="nomeServico" 
-                           name="nomeServico" 
+                           id="nomeServico"
+                           name="nomeServico"
                            #nome="ngModel"
-                           [(ngModel)]="servico.nomeServico" 
+                           [(ngModel)]="servico.nomeServico"
                            placeholder="Insira um serviço"
                            required
                            minlength="5"
@@ -47,7 +47,7 @@
       <button type="submit" class="btn" [disabled]="form.invalid" style="background-color: #FF6666; color: #FFF;">Salvar</button>
 
     </form>
-  
+
   </div>
 </div>
 

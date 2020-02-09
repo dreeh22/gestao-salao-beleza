@@ -7,6 +7,10 @@
     {
       "nomeServico": "Progressiva",
       "id": 2
+    },
+    {
+      "nomeServico": "Selagem",
+      "id": 3
     }
   ],
   "cliente": [
