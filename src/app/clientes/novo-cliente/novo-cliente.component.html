@@ -44,7 +44,7 @@
           <div class="form-group col-md-3">
             <label for="celular">Celular<span style="color: #FF0000;">*</span></label>
             <input type="text" class="form-control" id="celular" name="celular" #celular="ngModel"
-              [(ngModel)]="cliente.contato.celular" placeholder="(00) 0 0000-0000" required>
+              [(ngModel)]="cliente.contato.celular" mask="(00) 0 0000-0000"  placeholder="(00) 0 0000-0000" required>
 
             <div *ngIf="celular.invalid && celular.touched">
               <p>Campo obrigatório</p>
@@ -54,7 +54,7 @@
           <div class="form-group col-md-3">
             <label for="telefoneComercial">Telefone Comercial</label>
             <input type="text" class="form-control" id="telefoneComercial" name="telefoneComercial"
-              [(ngModel)]="cliente.contato.telefoneComercial" placeholder="(00) 0000-0000">
+              [(ngModel)]="cliente.contato.telefoneComercial" mask="(00) 0000-0000" placeholder="(00) 0000-0000">
           </div>
 
           <div class="form-group col-md-6">

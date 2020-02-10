@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { MensagemSucessoComponent } from 'src/app/mensagens/mensagem-sucesso/mensagem-sucesso.component';
 import { MensagemErroComponent } from './../../mensagens/mensagem-erro/mensagem-erro.component';
+import { Servico } from 'src/app/models/servico';
+import { Cliente } from './../../models/cliente';
 
 @Component({
   selector: 'app-lista-servicos-realizados',
@@ -14,8 +16,12 @@ import { MensagemErroComponent } from './../../mensagens/mensagem-erro/mensagem-
 export class ListaServicosRealizadosComponent implements OnInit {
 
   servicoRealizados: ServicoRealizado [] = [];
-  consultarPorData: ConsultarPorData = new ConsultarPorData();
+
+  listaDeServicos: Servico [] = [];
+
   servicoRealizado: ServicoRealizado = new ServicoRealizado();
+
+  clientes: Cliente [] = [];
 
   @ViewChild('modalDelete', {static: false}) templateModalDelete;
 
@@ -32,12 +38,51 @@ export class ListaServicosRealizadosComponent implements OnInit {
   ngOnInit() {
 
     this.listarServicosRealizados();
+    this.servicosRealizados();
+    this.clientesCadastrados();
+    this.servicoRealizado = new ServicoRealizado();
 
   }
 
-  consultarServicosPorData(){
-     this.servicoRealizadoService.retornarPorData(this.consultarPorData.dataInicio, this.consultarPorData.dataFim)
+  consultarServicosRealizados(form){
+
+    if(this.servicoRealizado.nomeCliente != null){
+        this.servicoRealizadoService.consultarPorCliente(this.servicoRealizado)
+        .subscribe(res => this.servicoRealizados = res);
+    }else 
+    
+    if(this.servicoRealizado.dataServico != null){
+        this.servicoRealizadoService.consultarPorData(this.servicoRealizado)
+        .subscribe(res => this.servicoRealizados = res);
+    }else 
+    
+    if(this.servicoRealizado.nomeServico != null){
+        this.servicoRealizadoService.consultarPorServico(this.servicoRealizado)
+        .subscribe(res => this.servicoRealizados = res);
+    }else 
+    
+    if(this.servicoRealizado.nomeCliente && this.servicoRealizado.dataServico != null){
+        this.servicoRealizadoService.consultarPorNomeData(this.servicoRealizado)
+        .subscribe(res => this.servicoRealizados = res); 
+      }else 
+      
+      if(this.servicoRealizado.nomeCliente && this.servicoRealizado.nomeServico != null){
+      this.servicoRealizadoService.consultarPorNomeData(this.servicoRealizado)
+        .subscribe(res => this.servicoRealizados = res); 
+    }else 
+    
+    if(this.servicoRealizado.dataServico && this.servicoRealizado.nomeServico != null){
+      this.servicoRealizadoService.consultarPorNomeDataServico(this.servicoRealizado)
+      .subscribe(res => this.servicoRealizados = res);
+    }else 
+    
+    if(this.servicoRealizado != null){
+      this.servicoRealizadoService.consultarPorNomeDataServico(this.servicoRealizado)
      .subscribe(res => this.servicoRealizados = res);
+
+    }
+ 
+     
   }
 
   capiturarIdServico(id){
@@ -72,6 +117,16 @@ export class ListaServicosRealizadosComponent implements OnInit {
       res => this.servicoRealizados = res
     );
 
+  }
+
+  servicosRealizados(){
+      this.servicoRealizadoService.consultarServicos().subscribe(
+        res => this.listaDeServicos = res
+      );
+  };
+
+  clientesCadastrados(){
+    this.servicoRealizadoService.listarClientes().subscribe(res => this.clientes = res);
   }
 
 

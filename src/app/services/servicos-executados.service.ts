@@ -5,6 +5,8 @@ import { take } from 'rxjs/Operators';
 import { environment } from './../../environments/environment';
 import { ServicoRealizado } from './../models/servico-realizado';
 import { Observable } from 'rxjs';
+import { Servico } from '../models/servico';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +27,55 @@ export class ServicosExecutadosService {
     return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado`);
   }
 
-  retornarPorData(dataInicio: Date, dataFim: Date){
-    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?dataServico=${dataInicio}&dataServico=${dataFim}`);
+  consultarServicosRealizados(){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado`);
+  }
+
+  //========== Filtros Consultas Realizadas ====================================================
+
+  // Porcliente
+  consultarPorCliente(servicoRealizado: ServicoRealizado){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?nomeCliente=${servicoRealizado.nomeCliente}`);
 
   }
+
+  // Por data
+  consultarPorData(servicoRealizado: ServicoRealizado){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?dataServico=${servicoRealizado.dataServico}`);
+
+  }
+
+  // Por Serviço
+  consultarPorServico(servicoRealizado: ServicoRealizado){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?nomeServico=${servicoRealizado.nomeServico}`);
+
+  }
+
+  //Por nome do cliente e data do serviço
+  consultarPorNomeData(servicoRealizado: ServicoRealizado){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?nomeCliente=${servicoRealizado.nomeCliente}&dataServico=${servicoRealizado.dataServico}`);
+
+  }
+
+   //Por nome do cliente e serviço realizado
+   consultarPorclienteData(servicoRealizado: ServicoRealizado){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?nomeCliente=${servicoRealizado.nomeCliente}&dataServico=${servicoRealizado.dataServico}`);
+
+  }
+
+   //Por data do serviço e nome do serviço
+   consultarPorDataEServico(servicoRealizado: ServicoRealizado){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?nomeCliente=${servicoRealizado.dataServico}&nomeServico=${servicoRealizado.nomeServico}`);
+
+  }
+
+  //Por cliente, data serviço e nome do serviço
+  consultarPorNomeDataServico(servicoRealizado: ServicoRealizado){
+    return this.http.get<ServicoRealizado[]>(`${environment.API}servico-realizado?nomeCliente=${servicoRealizado.nomeCliente}&dataServico=${servicoRealizado.dataServico}&nomeServico=${servicoRealizado.nomeServico}`);
+
+  }
+
+  // ================================================================================================
 
   getServicoPorId(id: number){
     return this.http.get<ServicoRealizado>(`${environment.API}servico-realizado/${id}`);
@@ -41,6 +88,10 @@ export class ServicosExecutadosService {
 
   deletarServicoRealizado(id: number){
     return this.http.delete(`${environment.API}servico-realizado/${id}`);
+  }
+
+  consultarServicos(){
+    return this.http.get<Servico[]>(`${environment.API}servico`);
   }
 
 

@@ -13,21 +13,53 @@
 
         <div class="card-body">
 
-            <h6 style="margin-bottom: 2%;">Consultar serviços por período</h6>
+            <h5 style="margin-bottom: 2%;">Filtros</h5>
 
-            <form #form="ngForm" (ngSubmit)="consultarServicosPorData(form); form.reset()">
+            <form #form="ngForm" (ngSubmit)="consultarServicosRealizados(servicoRealizado); form.reset()">
+
+                <div class="form-group">
+
+                    <label for="nomeCliente">Clientes</label>
+
+                    <input  class="form-control col"
+                            id="nomeCliente"
+                            list="listaCliente"
+                            name="cliente"
+                            [(ngModel)]="servicoRealizado.nomeCliente"
+                            placeholder="Clique para selecionar um cliente"
+                            required >
+
+                    <datalist id="listaCliente">
+                            <option *ngFor="let cliente of clientes" value="{{cliente.nome}}">{{cliente.contato.celular}}</option>
+                    </datalist>
+
+                  </div>
 
                 <div class="row mb-4">
 
                     <div class="form-group col">
-                        <label for="dataInicio">Data de Inicio</label>
-                        <input type="date" id="dataInicio" name="dataInicio" [(ngModel)]="consultarPorData.dataInicio" class="form-control">
+                        <label for="dataInicio">Data de realização do serviço</label>
+                        <input type="date" id="data" name="dataServico" [(ngModel)]="servicoRealizado.dataServico" class="form-control">
                     </div>
 
                     <div class="form-group col">
-                        <label for="dataFim">Data Fim</label>
-                        <input type="date" id="dataFim" name="dataFim" [(ngModel)]="consultarPorData.dataFim" class="form-control">
+
+                        <label for="servico">Serviço</label>
+
+                        <input  class="form-control"
+                                id="servico"
+                                list="listaServico"
+                                name="servicoRealizado"
+                                [(ngModel)]="servicoRealizado.nomeServico"
+                                placeholder="Clique para selecionar um serviço"
+                                >
+
+                            <datalist id="listaServico">
+                                <option *ngFor="let servico of listaDeServicos" value="{{servico.nomeServico}}" ></option>
+                            </datalist>
+
                     </div>
+                    
 
                 </div>
 
@@ -50,7 +82,7 @@
 
         <div class="card-body">
 
-            <table class="table table-hover text-center">
+            <table class="table table-hover text-center" *ngIf="servicoRealizados.length > 0">
 
                 <thead>
                     <tr>
@@ -69,7 +101,7 @@
                         <td>{{servicoRealizado.nomeCliente}}</td>
                         <td>{{servicoRealizado.nomeServico}}</td>
                         <td>{{servicoRealizado.valorServico}}</td>
-                        <td>{{servicoRealizado.dataServico}}</td>
+                        <td>{{servicoRealizado.dataServico | date: 'dd/MM/yyyy'}}</td>
                         <td>
                             <button type="button" class="btn btn-primary mr-2" (click)="capiturarIdServico(servicoRealizado.id)">Editar</button>
                             <button type="button" class="btn btn-danger" (click)="abrirModalDelete(servicoRealizado.id)">excluir</button>
@@ -79,7 +111,13 @@
 
             </table>
 
+            <div *ngIf="servicoRealizados.length <= 0">
+                Nenhum resultado encontrado.
+            </div>
+
         </div>
+
+        
 
     </div>
 

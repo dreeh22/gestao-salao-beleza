@@ -32,7 +32,7 @@
                           <tr *ngFor="let cliente of clientes" >
                               <td>{{cliente.id}}</td>
                               <td>{{cliente.nome}}</td>
-                              <td>{{cliente.contato.celular}}</td>
+                              <td>{{cliente.contato.celular | mask: '(00) 0 0000-0000'}}</td>
                               <td><button type="button" class="btn btn-link" (click)="habilitarBlocoInformacoes(cliente.id)">Visualizar</button></td>
                               <td>
 

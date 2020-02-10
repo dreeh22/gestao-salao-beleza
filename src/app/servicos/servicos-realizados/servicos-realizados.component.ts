@@ -43,7 +43,7 @@ export class ServicosRealizadosComponent implements OnInit {
 
   salvarServicoRealizado(form){
 
-      if(this.servicoRealizado === null){
+      if(this.servicoRealizado.id == null){
 
           this.serviceServicosRealizados.salvarServicoRealizado(this.servicoRealizado).subscribe(
             res => {

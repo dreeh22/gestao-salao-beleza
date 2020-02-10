@@ -19,6 +19,8 @@ import { AlertaModalSucessoComponent } from './alertas-compartilhados/alerta-mod
 import { ListarClientesComponent } from './clientes/listar-clientes/listar-clientes.component';
 import { ServicosRealizadosComponent } from './servicos/servicos-realizados/servicos-realizados.component';
 import { ListaServicosRealizadosComponent } from './servicos/lista-servicos-realizados/lista-servicos-realizados.component';
+import { NgxMaskModule } from 'ngx-mask'
+
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { ListaServicosRealizadosComponent } from './servicos/lista-servicos-real
     FormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
