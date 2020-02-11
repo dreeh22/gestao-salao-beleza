@@ -3,9 +3,8 @@ import { ServicoService } from './../../services/servico.service';
 import { Servico } from './../../models/servico';
 import { RouterModule, Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { MensagemSucessoComponent } from './../../mensagens/mensagem-sucesso/mensagem-sucesso.component';
-import { MensagemErroComponent } from 'src/app/mensagens/mensagem-erro/mensagem-erro.component';
-import { ModalMensagemSucessoComponent } from 'src/app/mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
+import { AlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
+import { AlertaErroComponent } from 'src/app/1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 
 
 
@@ -26,16 +25,14 @@ export class ListaServicosComponent implements OnInit {
 
   servicoSelecionado: Servico = new Servico();
 
-  /* Códido para encontrar o componente de modal do tipo ng-template que está na VIEW */
   @ViewChild('modalDelete', {static: false}) componentModal;
 
-  /* Código para poder ter acesso ao componente de mensagens e seus métodos */
-  @ViewChild(MensagemSucessoComponent, {static: false}) msgSucesso: MensagemSucessoComponent;
+  
+  @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
 
-  @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
+  @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
 
-  /* Código para poder ter acesso ao componente modal de mensagem de sucesso e seus métodos */
-  @ViewChild(ModalMensagemSucessoComponent, {static: false}) modalMsgErro: ModalMensagemSucessoComponent;
+  //@ViewChild(ModalAlertaSucessoComponent, {static: false}) modalMsgErro: ModalAlertaSucessoComponent;
 
   constructor(private servicoService: ServicoService, 
               private router: Router,
@@ -50,7 +47,6 @@ export class ListaServicosComponent implements OnInit {
     this.router.navigate(['servico/editar', id]);
   }
 
-  /* Método para capturar id e abrir a modal para confirmação da exclusão de um serviço */
   obterIdDeletar(id) {
     this.servicoSelecionado.id = id;
     this.metodosModal = this.modalService.show(this.componentModal, {class: 'modal-sm-6'})
@@ -70,17 +66,14 @@ export class ListaServicosComponent implements OnInit {
       }
     );
 
-    /* Código para fechar a modal de Confirmação*/
     this.metodosModal.hide();
   
   }
 
-/* Código para fechar a modal de deleção*/
   decline(){
     this.metodosModal.hide();
   }
 
-  /* Método que retorna todos os serviços cadastrados */
   getServicos(){
     this.servicoService.getServicos().subscribe(dados => this.listaRecebida = dados);
   }

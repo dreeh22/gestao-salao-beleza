@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-mensagem-erro',
-  templateUrl: './mensagem-erro.component.html',
-  styleUrls: ['./mensagem-erro.component.css']
+  selector: 'app-alerta-erro',
+  templateUrl: './alerta-erro.component.html',
+  styleUrls: ['./alerta-erro.component.css']
 })
-export class MensagemErroComponent implements OnInit {
+export class AlertaErroComponent implements OnInit {
 
   msgErro: string;
 

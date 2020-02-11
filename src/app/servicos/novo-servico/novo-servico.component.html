@@ -3,8 +3,8 @@
 <h4 class="titulo">Novo Serviço</h4>
 
 <!-- Chamada dos componentes de mensagens-->
-<app-mensagem-sucesso></app-mensagem-sucesso>
-<app-mensagem-erro></app-mensagem-erro>
+<app-alerta-sucesso></app-alerta-sucesso>
+<app-alerta-erro></app-alerta-erro>
 
 
 <div class="card">
@@ -44,7 +44,7 @@
       <span>Quantidade de caracteres Excedido.</span>
     </div>
 
-      <button type="submit" class="btn" [disabled]="form.invalid" style="background-color: #FF6666; color: #FFF;">Salvar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
 
     </form>
 
@@ -56,4 +56,4 @@
 </section>
 
 <!--Chama o componente de modal para mensagem de sucesso-->
-<app-modal-mensagem-sucesso></app-modal-mensagem-sucesso>
+<app-modal-alerta-sucesso></app-modal-alerta-sucesso>

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Servico } from './../../models/servico';
 import { ServicoService } from './../../services/servico.service';
-import { MensagemSucessoComponent } from './../../mensagens/mensagem-sucesso/mensagem-sucesso.component';
-import { MensagemErroComponent } from 'src/app/mensagens/mensagem-erro/mensagem-erro.component';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { ModalMensagemSucessoComponent } from 'src/app/mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
+import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
+import { AlertaSucessoComponent } from './../../1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
+import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 
 @Component({
   selector: 'app-novo-servico',
@@ -14,12 +14,12 @@ import { ModalMensagemSucessoComponent } from 'src/app/mensagens/modal-mensagem-
 export class NovoServicoComponent implements OnInit {
 
   /* Usando o 'ViewChild' para capturar os métodos do componente de mensagem */
-  @ViewChild(MensagemSucessoComponent, {static: false}) msgSucesso: MensagemSucessoComponent;
+  @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
 
-  @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
+  @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
 
 /* Usando o 'ViewChild' para capturar os métodos do componente de mensagem */
-  @ViewChild(ModalMensagemSucessoComponent, {static: false}) modalMensagemSucesso: ModalMensagemSucessoComponent;
+  @ViewChild(ModalAlertaSucessoComponent, {static: false}) modalMensagemSucesso: ModalAlertaSucessoComponent;
 
   servico: Servico;
   servicoId: number;

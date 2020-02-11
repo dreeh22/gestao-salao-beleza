@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-mensagem-sucesso',
-  templateUrl: './mensagem-sucesso.component.html',
-  styleUrls: ['./mensagem-sucesso.component.css']
+  selector: 'app-alerta-sucesso',
+  templateUrl: './alerta-sucesso.component.html',
+  styleUrls: ['./alerta-sucesso.component.css']
 })
-export class MensagemSucessoComponent implements OnInit {
+export class AlertaSucessoComponent implements OnInit {
 
   msgSucesso: string;
 

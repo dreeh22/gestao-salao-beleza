@@ -3,10 +3,10 @@ import { ServicosExecutadosService } from 'src/app/services/servicos-executados.
 import { ServicoRealizado, ConsultarPorData } from 'src/app/models/servico-realizado';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { MensagemSucessoComponent } from 'src/app/mensagens/mensagem-sucesso/mensagem-sucesso.component';
-import { MensagemErroComponent } from './../../mensagens/mensagem-erro/mensagem-erro.component';
 import { Servico } from 'src/app/models/servico';
 import { Cliente } from './../../models/cliente';
+import { AlertaSucessoComponent } from './../../1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
+import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 
 @Component({
   selector: 'app-lista-servicos-realizados',
@@ -25,9 +25,9 @@ export class ListaServicosRealizadosComponent implements OnInit {
 
   @ViewChild('modalDelete', {static: false}) templateModalDelete;
 
-  @ViewChild(MensagemSucessoComponent, {static: false}) msgSucesso: MensagemSucessoComponent;
+  @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
 
-  @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
+  @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
 
   metodosModal: BsModalRef;
 

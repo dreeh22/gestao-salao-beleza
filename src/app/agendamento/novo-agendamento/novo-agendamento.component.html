@@ -1,0 +1,113 @@
+<h4 class="titulo">Agendamento de Clientes</h4>
+
+<app-alerta-erro></app-alerta-erro>
+
+<div class="card ml-4 mr-4">
+
+    <div class="card-header">
+      Agendamento
+    </div>
+  
+    <div class="card-body">
+  
+        <form #form="ngForm" (ngSubmit)="salvarAgenda(agendamento); form.reset()">
+
+            <div class="form-group">
+
+                <label for="nomeCliente">Clientes*</label>
+
+                <input  class="form-control col"
+                        id="nomeCliente"
+                        list="listaCliente"
+                        name="cliente"
+                        placeholder="Clique para selecionar um cliente"
+                        [(ngModel)]="agendamento.cliente"
+                        #nomeCliente="ngModel"
+                        required>
+
+                <datalist id="listaCliente">
+                        <option *ngFor="let cliente of clientes" value="{{cliente.nome}}">{{cliente.contato.celular}}</option>
+                </datalist>
+
+                <div *ngIf="nomeCliente.invalid && nomeCliente.touched">
+                    <span style="color:#ff0000">Campo obrigatório</span> 
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-4">
+
+                    <label for="servico">Serviço</label>
+
+                    <input  class="form-control"
+                            id="servico"
+                            list="listaServico"
+                            name="servicoRealizado"
+                            placeholder="Clique para selecionar um serviço"
+                            [(ngModel)]="agendamento.servico"
+                            #servico="ngModel"
+                            required>
+
+                        <datalist id="listaServico">
+                            <option *ngFor="let servico of servicos" value="{{servico.nomeServico}}"></option>
+                        </datalist>
+
+                        <div *ngIf="servico.invalid && servico.touched">
+                            <span style="color:#ff0000">Campo obrigatório</span> 
+                        </div>
+
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="horarioInicio">Início</label>
+                    <input type="time" 
+                            name="inicio"
+                           class="form-control" 
+                           id="horarioInicio" 
+                           [(ngModel)]="agendamento.inicio"
+                           #inicio="ngModel"
+                           required>
+
+                            <div *ngIf="inicio.invalid && inicio.touched">
+                                    <span style="color:#ff0000">Campo obrigatório</span> 
+                            </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="horarioFim">Fim</label>
+                    <input type="time" 
+                            name="fim"
+                           class="form-control" 
+                           id="horarioFim"
+                           [(ngModel)]="agendamento.fim"
+                           #campoFim="ngModel"
+                           required>
+
+                           <div *ngIf="campoFim.invalid && campoFim.touched">
+                                <span style="color:#ff0000">Campo obrigatório</span> 
+                           </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="observacao">Observação</label>
+                    <textarea class="form-control" 
+                              id="observacao"
+                              name="observacao"
+                              [(ngModel)]="agendamento.observacao"></textarea>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
+
+            
+        </form>
+
+        <app-modal-alerta-sucesso></app-modal-alerta-sucesso>
+  
+    </div>
+
+  </div>
+

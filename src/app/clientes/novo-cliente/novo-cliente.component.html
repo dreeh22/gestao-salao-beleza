@@ -6,6 +6,9 @@
       <h4 style="margin-top:10px;">Novo Cliente</h4>
     </div>
 
+    <app-alerta-sucesso></app-alerta-sucesso>
+    <app-alerta-erro></app-alerta-erro>
+
     <div class="col-2" style="padding-right: 0;">
       <button class="btn btn-dafault" style="width: 100%;" (click)="redirecionarParaListaCliente()">Listar
         clientes</button>
@@ -71,7 +74,7 @@
 
         </div>
 
-        <button class="btn btn-dafault" [disabled]="form.invalid">Salvar</button>
+        <button class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
 
         <!--{{form.value | json}}-->
 
@@ -84,4 +87,4 @@
 
 </section>
 
-<app-alerta-modal-sucesso></app-alerta-modal-sucesso>
+<app-modal-alerta-sucesso></app-modal-alerta-sucesso>

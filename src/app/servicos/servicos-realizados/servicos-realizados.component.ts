@@ -4,9 +4,9 @@ import { ServicosExecutadosService } from 'src/app/services/servicos-executados.
 import { Servico } from 'src/app/models/servico';
 import { ServicoService } from 'src/app/services/servico.service';
 import { ServicoRealizado } from 'src/app/models/servico-realizado';
-import { MensagemErroComponent } from 'src/app/mensagens/mensagem-erro/mensagem-erro.component';
-import { AlertaModalSucessoComponent } from './../../alertas-compartilhados/alerta-modal-sucesso/alerta-modal-sucesso.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
+import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 
 @Component({
   selector: 'app-servicos-realizados',
@@ -21,8 +21,8 @@ export class ServicosRealizadosComponent implements OnInit {
 
   servicoRealizado: ServicoRealizado = new ServicoRealizado();
 
-  @ViewChild(AlertaModalSucessoComponent, {static: false}) modalMsgSucesso: AlertaModalSucessoComponent;
-  @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
+  @ViewChild(ModalAlertaSucessoComponent, {static: false}) modalMsgSucesso: ModalAlertaSucessoComponent;
+  @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
 
   constructor(private serviceServicosRealizados: ServicosExecutadosService,
               private servicoService: ServicoService,

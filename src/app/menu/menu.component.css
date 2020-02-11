@@ -29,9 +29,11 @@ float:left;
 .dropdown {
   position: relative;
   display: inline-block;
-  border-bottom: 1px solid #ff8888;
+  border: 1px solid #ff8888;
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .dropdown-content {

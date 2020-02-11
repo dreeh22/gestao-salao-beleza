@@ -9,17 +9,19 @@ import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ListaServicosComponent } from './servicos/lista-servicos/lista-servicos.component';
-import { MensagemErroComponent } from './mensagens/mensagem-erro/mensagem-erro.component';
-import { MensagemSucessoComponent } from './mensagens/mensagem-sucesso/mensagem-sucesso.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ModalMensagemSucessoComponent } from './mensagens/modal-mensagem-sucesso/modal-mensagem-sucesso.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.component';
-import { AlertaModalSucessoComponent } from './alertas-compartilhados/alerta-modal-sucesso/alerta-modal-sucesso.component';
 import { ListarClientesComponent } from './clientes/listar-clientes/listar-clientes.component';
 import { ServicosRealizadosComponent } from './servicos/servicos-realizados/servicos-realizados.component';
 import { ListaServicosRealizadosComponent } from './servicos/lista-servicos-realizados/lista-servicos-realizados.component';
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
+import { NovoAgendamentoComponent } from './agendamento/novo-agendamento/novo-agendamento.component';
+import { ModalAlertaSucessoComponent } from './1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
+import { AlertaSucessoComponent } from './1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
+import { AlertaErroComponent } from './1-alertas-compartilhados/alerta-erro/alerta-erro.component';
+import { ClientesAgendadosComponent } from './agendamento/clientes-agendados/clientes-agendados.component'
+import { Moment } from "moment";
 
 
 
@@ -30,14 +32,15 @@ import { NgxMaskModule } from 'ngx-mask'
     NovoServicoComponent,
     MenuComponent,
     ListaServicosComponent,
-    MensagemErroComponent,
-    MensagemSucessoComponent,
-    ModalMensagemSucessoComponent,
     NovoClienteComponent,
-    AlertaModalSucessoComponent,
     ListarClientesComponent,
     ServicosRealizadosComponent,
-    ListaServicosRealizadosComponent
+    ListaServicosRealizadosComponent,
+    NovoAgendamentoComponent,
+    ModalAlertaSucessoComponent,
+    AlertaSucessoComponent,
+    AlertaErroComponent,
+    ClientesAgendadosComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { NgxMaskModule } from 'ngx-mask'
     ModalModule.forRoot(),
     NgxPaginationModule,
     NgxMaskModule.forRoot()
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

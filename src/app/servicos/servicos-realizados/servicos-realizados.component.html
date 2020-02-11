@@ -4,7 +4,7 @@
         <h4 style="margin-top:10px;">Novo Serviço Realizado</h4>
     </div>
 
-    <app-mensagem-erro></app-mensagem-erro>
+    <app-alerta-erro></app-alerta-erro>
 
     <div class="card">
 
@@ -30,7 +30,7 @@
 
                     <label for="nomeCliente">Cliente*</label>
 
-                    <input  class="form-control col-6"
+                    <input  class="form-control col-12"
                             id="nomeCliente"
                             list="listaCliente"
                             name="cliente"
@@ -110,9 +110,9 @@
                 </div>
 
                     <button type="submit"
-                            class="btn ptn-default"
+                            class="btn btn-primary"
                             [disabled]="form.invalid"
-                            style="background-color: #FF6666; color: #fff;  margin-top: 31px;">
+                            style="margin-top: 31px;">
                         Salvar
                     </button>
 
@@ -122,7 +122,7 @@
 
       </div>
 
-      <app-alerta-modal-sucesso></app-alerta-modal-sucesso>
+      <app-modal-alerta-sucesso></app-modal-alerta-sucesso>
 
 
 </section>

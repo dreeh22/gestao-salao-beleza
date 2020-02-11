@@ -67,5 +67,45 @@
       "dataServico": "2020-02-04",
       "id": 4
     }
+  ],
+  "agendamento": [
+    {
+      "cliente": "Rafaela de Jesus Araújo",
+      "servico": "Progressiva",
+      "inicio": "08:00",
+      "fim": "09:30",
+      "observacao": "Teste de observação",
+      "id": 1
+    },
+    {
+      "cliente": "Valeria de Araujo",
+      "servico": "Corte de cabelo",
+      "inicio": "10:00",
+      "fim": "10:30",
+      "observacao": "asdasdasdsad daasdasd adasdasd ",
+      "id": 2
+    },
+    {
+      "cliente": "Valeria de Araujo",
+      "servico": "Selagem",
+      "inicio": "08:00",
+      "fim": "10:50",
+      "observacao": "dadasdasd",
+      "id": 3
+    },
+    {
+      "cliente": "Rafaela de Jesus Araújo",
+      "servico": "Corte de cabelo",
+      "inicio": "10:00",
+      "fim": "11:00",
+      "id": 4
+    },
+    {
+      "cliente": "Valeria de Araujo",
+      "servico": "Corte de cabelo",
+      "inicio": "10:20",
+      "fim": "13:00",
+      "id": 5
+    }
   ]
 }

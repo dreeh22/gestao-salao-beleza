@@ -1,8 +1,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertaModalSucessoComponent } from './../../alertas-compartilhados/alerta-modal-sucesso/alerta-modal-sucesso.component';
 import { ClienteService } from './../../services/cliente.service';
 import { Cliente, Contato } from './../../models/cliente';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class NovoClienteComponent implements OnInit {
 
   cliente: Cliente = new Cliente();
 
-  @ViewChild(AlertaModalSucessoComponent, {static: false}) modalMsgSucesso: AlertaModalSucessoComponent;
+  @ViewChild(ModalAlertaSucessoComponent, {static: false}) modalMsgSucesso: ModalAlertaSucessoComponent;
 
   constructor(private clienteService: ClienteService,
               private router: Router,

@@ -3,8 +3,8 @@ import { Cliente, Contato } from './../../models/cliente';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { MensagemSucessoComponent } from './../../mensagens/mensagem-sucesso/mensagem-sucesso.component';
-import { MensagemErroComponent } from 'src/app/mensagens/mensagem-erro/mensagem-erro.component';
+import { AlertaSucessoComponent } from './../../1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
+import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 
 @Component({
   selector: 'app-listar-clientes',
@@ -24,8 +24,8 @@ export class ListarClientesComponent implements OnInit {
   metodosModalRef: BsModalRef;
 
   @ViewChild('modalDeletar', {static: false}) templateModalDeletar;
-  @ViewChild(MensagemSucessoComponent, {static: false}) msgSucesso: MensagemSucessoComponent;
-  @ViewChild(MensagemErroComponent, {static: false}) msgErro: MensagemErroComponent;
+  @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
+  @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
 
   constructor(private clienteService: ClienteService,
               private router: Router,

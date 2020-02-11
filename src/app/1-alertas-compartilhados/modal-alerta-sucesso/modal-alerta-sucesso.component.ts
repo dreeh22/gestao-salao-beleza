@@ -1,12 +1,12 @@
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-alerta-modal-sucesso',
-  templateUrl: './alerta-modal-sucesso.component.html',
-  styleUrls: ['./alerta-modal-sucesso.component.css']
+  selector: 'app-modal-alerta-sucesso',
+  templateUrl: './modal-alerta-sucesso.component.html',
+  styleUrls: ['./modal-alerta-sucesso.component.css']
 })
-export class AlertaModalSucessoComponent implements OnInit {
+export class ModalAlertaSucessoComponent implements OnInit {
 
   modalRef: BsModalRef;
 
