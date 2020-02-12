@@ -70,42 +70,41 @@
   ],
   "agendamento": [
     {
+      "dataAgendamento": "2020-02-12",
       "cliente": "Rafaela de Jesus Araújo",
-      "servico": "Progressiva",
+      "servico": "Corte de cabelo",
       "inicio": "08:00",
-      "fim": "09:30",
-      "observacao": "Teste de observação",
+      "fim": "09:00",
+      "observacao": "Pagamento com cartão de crédito.",
       "id": 1
     },
     {
+      "dataAgendamento": "2020-02-12",
       "cliente": "Valeria de Araujo",
-      "servico": "Corte de cabelo",
+      "servico": "Progressiva",
       "inicio": "10:00",
-      "fim": "10:30",
-      "observacao": "asdasdasdsad daasdasd adasdasd ",
+      "fim": "11:30",
+      "observacao": "-",
       "id": 2
     },
     {
-      "cliente": "Valeria de Araujo",
-      "servico": "Selagem",
-      "inicio": "08:00",
-      "fim": "10:50",
-      "observacao": "dadasdasd",
+      "dataAgendamento": "2020-02-13",
+      "cliente": "Marcos de Oliveira",
+      "servico": "Corte de cabelo",
+      "inicio": "08:30",
+      "fim": "09:15",
+      "observacao": "Pode chegar atrasado",
       "id": 3
     },
     {
-      "cliente": "Rafaela de Jesus Araújo",
-      "servico": "Corte de cabelo",
-      "inicio": "10:00",
-      "fim": "11:00",
+      "status": "Pendente",
+      "dataAgendamento": "2020-02-12",
+      "cliente": "Marcos de Oliveira",
+      "servico": "Selagem",
+      "inicio": "11:20",
+      "fim": "12:00",
+      "observacao": "Observação de teste",
       "id": 4
-    },
-    {
-      "cliente": "Valeria de Araujo",
-      "servico": "Corte de cabelo",
-      "inicio": "10:20",
-      "fim": "13:00",
-      "id": 5
     }
   ]
 }

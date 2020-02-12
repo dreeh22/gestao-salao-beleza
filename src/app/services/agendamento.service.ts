@@ -14,4 +14,13 @@ export class AgendamentoService {
   salvarAgenda(agenda: Agendamento){
       return this.http.post(`${environment.API}agendamento`, agenda).pipe(take(1));
   }
+ 
+  listarAgendaPorDataAtual(data: string){
+    return this.http.get<Agendamento[]>(`${environment.API}agendamento?dataAgendamento=${data}`);
+  }
+
+  consultarAgendaPorData(data: Date){
+    return this.http.get<Agendamento[]>(`${environment.API}agendamento?dataAgendamento=${data}`)
+  }
+
 }

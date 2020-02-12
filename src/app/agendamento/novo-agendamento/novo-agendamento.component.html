@@ -12,25 +12,42 @@
   
         <form #form="ngForm" (ngSubmit)="salvarAgenda(agendamento); form.reset()">
 
-            <div class="form-group">
+            <div class="form-row">
 
-                <label for="nomeCliente">Clientes*</label>
+                    <div class="form-group col-12">
+                        <label for="horarioInicio">Data de Realização do Serviço</label>
+                        <input type="date" 
+                                name="data"
+                            class="form-control" 
+                            id="horarioInicio" 
+                            [(ngModel)]="agendamento.dataAgendamento"
+                            #data="ngModel"
+                            required>
 
-                <input  class="form-control col"
-                        id="nomeCliente"
-                        list="listaCliente"
-                        name="cliente"
-                        placeholder="Clique para selecionar um cliente"
-                        [(ngModel)]="agendamento.cliente"
-                        #nomeCliente="ngModel"
-                        required>
+                                <div *ngIf="data.invalid && data.touched">
+                                        <span style="color:#ff0000">Campo obrigatório</span> 
+                                </div>
+                    </div>
 
-                <datalist id="listaCliente">
-                        <option *ngFor="let cliente of clientes" value="{{cliente.nome}}">{{cliente.contato.celular}}</option>
-                </datalist>
+                <div class="form-group col-12">
+                    <label for="nomeCliente">Clientes*</label>
+                    <input  class="form-control"
+                            id="nomeCliente"
+                            list="listaCliente"
+                            name="cliente"
+                            placeholder="Clique para selecionar um cliente"
+                            [(ngModel)]="agendamento.cliente"
+                            #nomeCliente="ngModel"
+                            required>
 
-                <div *ngIf="nomeCliente.invalid && nomeCliente.touched">
-                    <span style="color:#ff0000">Campo obrigatório</span> 
+                    <datalist id="listaCliente">
+                            <option *ngFor="let cliente of clientes" value="{{cliente.nome}}">{{cliente.contato.celular}}</option>
+                    </datalist>
+
+                    <div *ngIf="nomeCliente.invalid && nomeCliente.touched">
+                        <span style="color:#ff0000">Campo obrigatório</span> 
+                    </div>
+
                 </div>
 
             </div>

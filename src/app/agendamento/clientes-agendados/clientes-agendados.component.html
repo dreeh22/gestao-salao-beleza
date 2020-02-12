@@ -1,5 +1,8 @@
 <h4 class="titulo">Consultar Agenda</h4>
 
+<form #form="ngForm" (ngSubmit)="consultarAgendasPorData(agendamento.dataAgendamento)">
+
+
 <div class="card ml-4 mr-4">
 
     <div class="card-header">
@@ -7,18 +10,14 @@
     </div>
   
     <div class="card-body">
-  
         
-        <form #form="ngForm">
 
             <div class="form-group">
                 <label for="data">Data do agendamento</label>
-                <input type="date" class="form-control" id="data">
+                <input type="date" class="form-control" id="data" name="data" [(ngModel)]="agendamento.dataAgendamento">
               </div>
 
               <button class="btn btn-primary">Consultar</button>
-        </form>
-
   
     </div>
 
@@ -27,14 +26,50 @@
   <div class="card ml-4 mr-4 mt-4">
 
     <div class="card-header">
-       <span style="font-weight: bold;">{{datas}}</span>
-    </div>
+        Clientes Agendados para:<span class="ml-2" style="font-weight: bold;">{{dataCard}}</span>
+      </div>
+
   
     <div class="card-body">
   
-        
+        <div class="card shadow-sm bg-white rounded mb-2" *ngFor="let agenda of agendasCadastradas">
+
+            <div class="card-body row text-center">
+              
+                <div class="col-2">
+                    {{agenda.inicio}} às
+                    {{agenda.fim}}
+                </div>
+
+                <div class="col-3">
+                    {{agenda.cliente}}
+                </div>
+
+                <div class="col-3">
+                    {{agenda.observacao}}
+                </div>
+
+                <div class="col-2" >
+                    <button class="btn btn-{{corStatus}} text-light">
+                        <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+                    </button>
+                
+                    
+                </div>
+
+                <div class="col-2">
+                    <button class="btn btn-primary mr-2">Editar</button>
+                    <button class="btn btn-danger">Excluir</button>
+                </div>
+
+            </div>
+
+          </div>
+
 
   
     </div>
 
   </div>
+
+</form>
