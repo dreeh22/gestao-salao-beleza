@@ -1,5 +1,9 @@
 <h4 class="titulo">Consultar Agenda</h4>
 
+<app-alerta-sucesso></app-alerta-sucesso>
+<app-alerta-erro></app-alerta-erro>
+<app-modal-alerta-sucesso></app-modal-alerta-sucesso>
+
 <form #form="ngForm" (ngSubmit)="consultarAgendasPorData(agendamento.dataAgendamento)">
 
 
@@ -50,7 +54,8 @@
                 </div>
 
                 <div class="col-2" >
-                    <button class="btn btn-{{corStatus}} text-light">
+                  
+                    <button class="btn btn-{{corStatus}} text-light" (click)="abrirModal(agenda.id)">
                         <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
                     </button>
                 
@@ -65,11 +70,52 @@
             </div>
 
           </div>
-
-
   
     </div>
 
   </div>
 
 </form>
+
+<ng-template #modalStatus>
+
+  <div class="modal-header background-modal-status">
+    <h4 class="modal-title">Confirmação</h4>
+  </div>
+
+  <div class="modal-body pb-5">
+    
+    <form #form="ngForm" (ngSubmit)="confirmar(agendamento)">
+
+      <div class="form-group">
+        <label for="status">Status</label>
+          <select class="form-control" id="status" name="status" [(ngModel)]="agendamento.status">
+            <option  selected>Selecione</option>
+            <option *ngFor="let status of listaStatus" value="{{status.nomeStatus}}">{{status.nomeStatus}}</option>
+          </select>
+      </div>
+
+    
+
+    <div class="text-center">
+      <button type="button" class="btn btn-default" style="margin-top: 5%;" type="submit">Sim</button>
+      <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="fechar()">Não</button>
+    </div>
+
+  </form>
+
+  </div>
+</ng-template>
+
+<!--<ng-template #modalDelete>
+
+  <div class="modal-header background-modal-deletar">
+    <h4 class="modal-title">Confirmação</h4>
+  </div>
+
+  <div class="modal-body text-center">
+    <h4>Deseja realmente deletar esse serviço?</h4>
+    <button type="button" class="btn btn-default" style="margin-top: 5%;" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="decline()">Não</button>
+  </div>
+</ng-template>-->

@@ -16,8 +16,8 @@
   "cliente": [
     {
       "contato": {
-        "celular": "61 9 9394-2970",
-        "telefoneComercial": "61 3331-3880",
+        "celular": "61993942970",
+        "telefoneComercial": "6133313880",
         "email": "rafaela@gmail.com",
         "outrasInformacoes": "Teste de edição com a inclusão de alguns campos. "
       },
@@ -70,41 +70,24 @@
   ],
   "agendamento": [
     {
-      "dataAgendamento": "2020-02-12",
+      "dataAgendamento": "2020-02-13",
       "cliente": "Rafaela de Jesus Araújo",
       "servico": "Corte de cabelo",
       "inicio": "08:00",
-      "fim": "09:00",
-      "observacao": "Pagamento com cartão de crédito.",
+      "fim": "10:00",
+      "observacao": "-",
+      "status": "Realizado",
       "id": 1
     },
     {
-      "dataAgendamento": "2020-02-12",
+      "dataAgendamento": "2020-02-13",
       "cliente": "Valeria de Araujo",
       "servico": "Progressiva",
-      "inicio": "10:00",
-      "fim": "11:30",
+      "inicio": "09:00",
+      "fim": "10:00",
       "observacao": "-",
+      "status": "Cancelado",
       "id": 2
-    },
-    {
-      "dataAgendamento": "2020-02-13",
-      "cliente": "Marcos de Oliveira",
-      "servico": "Corte de cabelo",
-      "inicio": "08:30",
-      "fim": "09:15",
-      "observacao": "Pode chegar atrasado",
-      "id": 3
-    },
-    {
-      "status": "Pendente",
-      "dataAgendamento": "2020-02-12",
-      "cliente": "Marcos de Oliveira",
-      "servico": "Selagem",
-      "inicio": "11:20",
-      "fim": "12:00",
-      "observacao": "Observação de teste",
-      "id": 4
     }
   ]
 }

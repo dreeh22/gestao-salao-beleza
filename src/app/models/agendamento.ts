@@ -9,5 +9,5 @@ export class Agendamento {
     inicio: Time;
     fim: Time;
     observacao: string;
-    status: string = 'Realizado';
+    status: string;
 }

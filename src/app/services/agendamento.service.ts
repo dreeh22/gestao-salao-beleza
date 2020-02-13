@@ -23,4 +23,13 @@ export class AgendamentoService {
     return this.http.get<Agendamento[]>(`${environment.API}agendamento?dataAgendamento=${data}`)
   }
 
+  buscarAgendaPorId(id: number){
+    return this.http.get<Agendamento>(`${environment.API}agendamento?id=${id}`);
+  }
+
+  editarStatusAgenda(agenda: Agendamento){
+    const url = `${environment.API}agendamento/${agenda.id}`;
+    return this.http.patch(url, agenda).pipe(take(1));
+  }
+
 }

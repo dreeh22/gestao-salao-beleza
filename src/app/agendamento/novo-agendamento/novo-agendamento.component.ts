@@ -33,6 +33,7 @@ export class NovoAgendamentoComponent implements OnInit {
   }
 
   salvarAgenda(){
+    this.agendamento.status = 'Pendente';
     this.agendamentoService.salvarAgenda(this.agendamento).subscribe(
       res => {
         this.msgModalSucesso.setMsgSucesso('Agendamento realizado com sucesso!');

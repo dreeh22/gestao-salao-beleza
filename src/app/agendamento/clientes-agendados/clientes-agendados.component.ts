@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 //import { Moment } from "moment";
 
 import * as moment from 'moment';
 import { AgendamentoService } from './../../services/agendamento.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Agendamento } from 'src/app/models/agendamento';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
+import { AlertaErroComponent } from 'src/app/1-alertas-compartilhados/alerta-erro/alerta-erro.component';
+import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
 
 @Component({
   selector: 'app-clientes-agendados',
@@ -24,13 +27,28 @@ export class ClientesAgendadosComponent implements OnInit {
 
   agendamento: Agendamento = new Agendamento();
 
-  constructor(private agendamentoService: AgendamentoService) { }
+  metodosModal: BsModalRef;
+
+  //Array para popular os status existente no componente de select.
+  listaStatus = [
+    {nomeStatus: 'Pendente'},
+    {nomeStatus: 'Realizado'},
+    {nomeStatus: 'Cancelado'}
+  ];
+
+  @ViewChild('modalStatus', {static: false}) templateModalStatus;
+  @ViewChild(ModalAlertaSucessoComponent, {static: false}) modalMsgSucesso: ModalAlertaSucessoComponent;
+  @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
+
+  constructor(private agendamentoService: AgendamentoService,
+              private modalService: BsModalService) { }
 
   ngOnInit() {
 
     this.dataCard = moment(new Date()).locale('pt-br').format('dddd, MMMM / YYYY');
     this.dataAtual = moment(new Date).format('YYYY-MM-DD');
     this.listarAgendasPorDataAtual();
+    console.log('LISTA', this.listaStatus);
   }
 
   // Lista as agendas para o dia atual ao entrar na tela de agendamentos
@@ -56,6 +74,45 @@ export class ClientesAgendadosComponent implements OnInit {
      //this.agendamento.dataAgendamento.toString();
 
   )}
+
+  consultarAgendaPorId(id){
+    this.agendamentoService.buscarAgendaPorId(id).subscribe(res => this.agendamento = res);
+  }
+
+  editarStatusAgenda(){
+    this.agendamentoService.editarStatusAgenda(this.agendamento).subscribe(
+      res =>{
+          this.modalMsgSucesso.setMsgSucesso('Status editado com sucesso!');
+      },
+      err => {
+        this.msgErro.setErro('Ocorreu um erro...');
+      }
+    );
+  }
+
+  abrirModal(id) {
+    this.agendamento.id = id;
+    this.metodosModal = this.modalService.show(this.templateModalStatus, {class: 'modal-sm-6'});
+  }
+
+  confirmar(){
+
+    this.agendamentoService.editarStatusAgenda(this.agendamento).subscribe(
+      res =>{
+          this.modalMsgSucesso.setMsgSucesso('Status editado com sucesso!');
+      },
+      err => {
+        this.msgErro.setErro('Ocorreu um erro...');
+      }
+    );
+
+    this.metodosModal.hide();
+  }
+
+  fechar(){
+    this.metodosModal.hide();
+  }
+
 
 
 }

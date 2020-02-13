@@ -1,3 +1,12 @@
 .bg{
     opacity: 1;
 }
+
+.background-modal-status{
+    background-color: #FF6666;
+    color: #FFF;
+  }
+
+  .background-modal-status h4{
+    margin-left: 35%;
+  }
