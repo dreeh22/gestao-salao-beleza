@@ -86,8 +86,38 @@
       "inicio": "09:00",
       "fim": "10:00",
       "observacao": "-",
-      "status": "Cancelado",
+      "status": "Realizado",
       "id": 2
+    },
+    {
+      "dataAgendamento": "2020-02-14",
+      "cliente": "Rafaela de Jesus Araújo",
+      "servico": "Progressiva",
+      "inicio": "08:00",
+      "fim": "09:00",
+      "observacao": "-",
+      "status": "Realizado",
+      "id": 3
+    },
+    {
+      "dataAgendamento": "2020-02-14",
+      "cliente": "Valeria de Araujo",
+      "servico": "Selagem",
+      "inicio": "10:00",
+      "fim": "11:00",
+      "observacao": "-",
+      "status": "Realizado",
+      "id": 4
+    },
+    {
+      "dataAgendamento": "2020-02-14",
+      "cliente": "Marcos de Oliveira",
+      "servico": "Corte de cabelo",
+      "inicio": "13:00",
+      "fim": "14:00",
+      "observacao": "Pagamento em dinheiro",
+      "status": "Cancelado",
+      "id": 5
     }
   ]
 }

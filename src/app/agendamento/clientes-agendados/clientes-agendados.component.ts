@@ -45,39 +45,30 @@ export class ClientesAgendadosComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.dataCard = moment(new Date()).locale('pt-br').format('dddd, MMMM / YYYY');
     this.dataAtual = moment(new Date).format('YYYY-MM-DD');
     this.listarAgendasPorDataAtual();
-    console.log('LISTA', this.listaStatus);
+
   }
 
   // Lista as agendas para o dia atual ao entrar na tela de agendamentos
   listarAgendasPorDataAtual(){
 
-    this.agendamentoService.listarAgendaPorDataAtual(this.dataAtual).subscribe(res => this.agendasCadastradas = res);
-
-    if(this.agendamento.status == 'Pendente'){
-      this.corStatus = 'warning';
-    }else if (this.agendamento.status == 'Cancelado'){
-      this.corStatus = 'danger';
-    }else if (this.agendamento.status == "Realizado") {
-      this.corStatus = 'success';
-    }
-    
+    this.agendamentoService.listarAgendaPorDataAtual(this.dataAtual)
+    .subscribe(res =>  this.agendasCadastradas = res);
   }
 
-  consultarAgendasPorData(form){
-  this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(
-     res => this.agendasCadastradas = res
+  consultarAgendasPorData(){
+    this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
 
-     //this.dataAtual = this.agendamento.dataAgendamento.toString();
-     //this.agendamento.dataAgendamento.toString();
+    this.dataCard = moment(this.agendamento.dataAgendamento).locale('pt-br').format('dddd, MMMM / YYYY');
 
-  )}
+}
 
-  consultarAgendaPorId(id){
-    this.agendamentoService.buscarAgendaPorId(id).subscribe(res => this.agendamento = res);
-  }
+  //consultarAgendaPorId(id){
+    //this.agendamentoService.buscarAgendaPorId(id).subscribe(res => this.agendamento = res);
+  //}
 
   editarStatusAgenda(){
     this.agendamentoService.editarStatusAgenda(this.agendamento).subscribe(
@@ -93,6 +84,7 @@ export class ClientesAgendadosComponent implements OnInit {
   abrirModal(id) {
     this.agendamento.id = id;
     this.metodosModal = this.modalService.show(this.templateModalStatus, {class: 'modal-sm-6'});
+    //this.consultarAgendaPorId(this.agendamento.id);
   }
 
   confirmar(){
@@ -100,6 +92,7 @@ export class ClientesAgendadosComponent implements OnInit {
     this.agendamentoService.editarStatusAgenda(this.agendamento).subscribe(
       res =>{
           this.modalMsgSucesso.setMsgSucesso('Status editado com sucesso!');
+          this.listarAgendasPorDataAtual();
       },
       err => {
         this.msgErro.setErro('Ocorreu um erro...');

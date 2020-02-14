@@ -4,7 +4,7 @@
 <app-alerta-erro></app-alerta-erro>
 <app-modal-alerta-sucesso></app-modal-alerta-sucesso>
 
-<form #form="ngForm" (ngSubmit)="consultarAgendasPorData(agendamento.dataAgendamento)">
+<form #form="ngForm" (ngSubmit)="consultarAgendasPorData(agendamento.dataAgendamento); form.reset()">
 
 
 <div class="card ml-4 mr-4">
@@ -26,6 +26,8 @@
     </div>
 
   </div>
+
+</form>
 
   <div class="card ml-4 mr-4 mt-4">
 
@@ -53,13 +55,19 @@
                     {{agenda.observacao}}
                 </div>
 
-                <div class="col-2" >
+                <div class="col-2" [ngSwitch]="agenda.status" >
                   
-                    <button class="btn btn-{{corStatus}} text-light" (click)="abrirModal(agenda.id)">
+                    <button *ngSwitchCase="'Pendente'" class="btn btn-warning text-light" (click)="abrirModal(agenda.id)">
                         <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
                     </button>
+
+                    <button *ngSwitchCase="'Realizado'" class="btn btn-success text-light" (click)="abrirModal(agenda.id)">
+                      <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+                  </button>
                 
-                    
+                  <button *ngSwitchCase="'Cancelado'" class="btn btn-danger text-light" (click)="abrirModal(agenda.id)">
+                    <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+                </button>
                 </div>
 
                 <div class="col-2">
@@ -75,7 +83,7 @@
 
   </div>
 
-</form>
+
 
 <ng-template #modalStatus>
 
@@ -85,13 +93,13 @@
 
   <div class="modal-body pb-5">
     
-    <form #form="ngForm" (ngSubmit)="confirmar(agendamento)">
+    <form #form="ngForm" (ngSubmit)="confirmar(agendamento); form.reset()">
 
       <div class="form-group">
         <label for="status">Status</label>
           <select class="form-control" id="status" name="status" [(ngModel)]="agendamento.status">
-            <option  selected>Selecione</option>
-            <option *ngFor="let status of listaStatus" value="{{status.nomeStatus}}">{{status.nomeStatus}}</option>
+            <option value="" disabled selected>Selecione...</option>
+            <option *ngFor="let status of listaStatus" >{{status.nomeStatus}}</option>
           </select>
       </div>
 
