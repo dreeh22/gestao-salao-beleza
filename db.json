@@ -1,16 +1,16 @@
 {
   "servico": [
     {
-      "nomeServico": "Corte de cabelo",
-      "id": 1
-    },
-    {
       "nomeServico": "Progressiva",
       "id": 2
     },
     {
       "nomeServico": "Selagem",
       "id": 3
+    },
+    {
+      "nomeServico": "Pintura",
+      "id": 4
     }
   ],
   "cliente": [
@@ -118,6 +118,16 @@
       "observacao": "Pagamento em dinheiro",
       "status": "Cancelado",
       "id": 5
+    },
+    {
+      "dataAgendamento": "2020-02-15",
+      "cliente": "Rafaela de Jesus Araújo",
+      "servico": "Pintura",
+      "inicio": "21:00",
+      "fim": "22:00",
+      "observacao": "Qualquer comentário",
+      "status": "Pendente",
+      "id": 6
     }
   ]
 }

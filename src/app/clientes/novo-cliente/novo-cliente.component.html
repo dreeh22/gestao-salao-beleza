@@ -8,9 +8,10 @@
 
     <app-alerta-sucesso></app-alerta-sucesso>
     <app-alerta-erro></app-alerta-erro>
+    <app-modal-alerta-sucesso></app-modal-alerta-sucesso>
 
     <div class="col-2" style="padding-right: 0;">
-      <button class="btn btn-dafault" style="width: 100%;" (click)="redirecionarParaListaCliente()">Listar
+      <button class="btn btn-primary botao-lista-clientes" style="width: 100%;" (click)="redirecionarParaListaCliente()">Listar
         clientes</button>
     </div>
 
@@ -37,8 +38,6 @@
             <p>Campo obrigatório</p>
           </div>
         </div>
-
-
 
         <h4 style="margin-bottom: 2%;">Contatos</h4>
 
@@ -76,8 +75,6 @@
 
         <button class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
 
-        <!--{{form.value | json}}-->
-
 
       </form>
 
@@ -87,4 +84,3 @@
 
 </section>
 
-<app-modal-alerta-sucesso></app-modal-alerta-sucesso>

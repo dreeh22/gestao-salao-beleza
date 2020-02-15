@@ -30,7 +30,7 @@ export class NovoClienteComponent implements OnInit {
 
   salvarCliente(form) {
 
-    if(this.cliente.id === null){
+    if (this.cliente.id == null) {
 
       this.clienteService.salvarCliente(this.cliente).subscribe(
         res => {
@@ -41,7 +41,7 @@ export class NovoClienteComponent implements OnInit {
         }
       );
 
-    }else{
+    } else {
 
       this.clienteService.editarCliente(this.cliente).subscribe(
         res => {

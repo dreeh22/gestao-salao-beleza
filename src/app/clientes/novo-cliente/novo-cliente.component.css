@@ -4,8 +4,9 @@
     margin-bottom: 2%;
   }
 
-  button{
+  .botao-lista-clientes{
       width: 10%;
+      margin-top:2%;
   }
 
   .div-row-novo-cliente{
