@@ -57,22 +57,23 @@
 
                 <div class="col-2" [ngSwitch]="agenda.status" >
                   
-                    <button *ngSwitchCase="'Pendente'" class="btn btn-warning text-light" (click)="abrirModal(agenda.id)">
+                    <button *ngSwitchCase="'Pendente'" class="btn btn-warning text-light" (click)="abrirModalStatus(agenda.id)">
                         <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
                     </button>
 
-                    <button *ngSwitchCase="'Realizado'" class="btn btn-success text-light" (click)="abrirModal(agenda.id)">
+                    <button *ngSwitchCase="'Realizado'" class="btn btn-success text-light" (click)="abrirModalStatus(agenda.id)">
                       <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
-                  </button>
+                    </button>
                 
-                  <button *ngSwitchCase="'Cancelado'" class="btn btn-danger text-light" (click)="abrirModal(agenda.id)">
-                    <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
-                </button>
+                    <button *ngSwitchCase="'Cancelado'" class="btn btn-danger text-light" (click)="abrirModalStatus(agenda.id)">
+                       <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+                    </button>
+
                 </div>
 
                 <div class="col-2">
-                    <button class="btn btn-primary mr-2">Editar</button>
-                    <button class="btn btn-danger">Excluir</button>
+                    <button class="btn btn-primary mr-2" (click)="capturarId(agenda.id)">Editar</button>
+                    <button class="btn btn-danger" (click)="abrirModalDeletar(agenda.id)">Excluir</button>
                 </div>
 
             </div>
@@ -115,15 +116,15 @@
   </div>
 </ng-template>
 
-<!--<ng-template #modalDelete>
+<ng-template #modalDeletar>
 
-  <div class="modal-header background-modal-deletar">
-    <h4 class="modal-title">Confirmação</h4>
+  <div class="modal-header bg-danger " style="display: flex; justify-content: center;">
+    <h4 class="modal-title text-light"  >Confirmação</h4>
   </div>
 
   <div class="modal-body text-center">
-    <h4>Deseja realmente deletar esse serviço?</h4>
-    <button type="button" class="btn btn-default" style="margin-top: 5%;" (click)="confirm()">Sim</button>
-    <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="decline()">Não</button>
+    <p>Tem certeza que deseja deletar esse cliente?</p>
+    <button type="button" class="btn btn-default" (click)="confirmarExclusao()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="fechar()">Não</button>
   </div>
-</ng-template>-->
+</ng-template>   

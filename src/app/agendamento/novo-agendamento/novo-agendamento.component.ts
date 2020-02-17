@@ -7,6 +7,7 @@ import { AgendamentoService } from './../../services/agendamento.service';
 import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
 import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 import { AlertaSucessoComponent } from './../../1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-novo-agendamento',
@@ -24,24 +25,49 @@ export class NovoAgendamentoComponent implements OnInit {
   @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
 
   constructor( private agendamentoService: AgendamentoService,
-               private compartilhadoService: CompartilhadoService) { }
+               private compartilhadoService: CompartilhadoService,
+               private route: ActivatedRoute,
+               private router: Router) { 
+
+               }
 
   ngOnInit() {
 
     this.listarClientesEServico();
+    this.buscarAgendaPorId();
 
   }
 
   salvarAgenda(){
+
     this.agendamento.status = 'Pendente';
-    this.agendamentoService.salvarAgenda(this.agendamento).subscribe(
-      res => {
-        this.msgModalSucesso.setMsgSucesso('Agendamento realizado com sucesso!');
-      },
-      err => {
-        this.msgErro.setErro('Ocorreu um erro ao tentar realizar o agendamento.');
-      }
-    );
+
+    if(this.agendamento.id == null){
+
+        this.agendamentoService.salvarAgenda(this.agendamento).subscribe(
+          res => {
+            this.msgModalSucesso.setMsgSucesso('Agendamento realizado com sucesso!');
+          },
+          err => {
+            this.msgErro.setErro('Ocorreu um erro ao tentar realizar o agendamento.');
+          }
+        );
+
+    }else {
+
+      this.agendamentoService.editarAgenda(this.agendamento).subscribe(
+        res => {
+          this.msgModalSucesso.setMsgSucesso('Agenda editada com sucesso!');
+          this.router.navigateByUrl('clientes-agendados');
+        },
+        err => {
+          this.msgErro.setErro('Ocorreu um erro..');
+        }
+      );
+
+    }
+
+    
   }
 
   listarClientesEServico(){
@@ -50,6 +76,11 @@ export class NovoAgendamentoComponent implements OnInit {
 
     this.compartilhadoService.listarServicos().subscribe(res => this.servicos = res);
 
+  }
+
+  buscarAgendaPorId(){
+    this.route.params.subscribe(params => this.agendamento.id = params['id'])
+    this.agendamentoService.buscarAgendaPorId(this.agendamento.id).subscribe(res => this.agendamento = res);
   }
 
   

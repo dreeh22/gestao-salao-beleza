@@ -14,12 +14,20 @@
 
             <div class="form-row">
 
+                <div class="form-group col-12">
+                    <input type="hidden" 
+                            name="id"
+                            class="form-control" 
+                            id="id" 
+                            [(ngModel)]="agendamento.id">
+                </div>
+
                     <div class="form-group col-12">
-                        <label for="horarioInicio">Data de Realização do Serviço</label>
+                        <label for="dataRealizacao">Data de Realização do Serviço</label>
                         <input type="date" 
                                 name="data"
                             class="form-control" 
-                            id="horarioInicio" 
+                            id="dataRealizacao" 
                             [(ngModel)]="agendamento.dataAgendamento"
                             #data="ngModel"
                             required>

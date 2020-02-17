@@ -8,6 +8,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
 import { AlertaErroComponent } from 'src/app/1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes-agendados',
@@ -37,11 +39,15 @@ export class ClientesAgendadosComponent implements OnInit {
   ];
 
   @ViewChild('modalStatus', {static: false}) templateModalStatus;
+  @ViewChild('modalDeletar', {static: false}) templateModalDeletar;
+  
   @ViewChild(ModalAlertaSucessoComponent, {static: false}) modalMsgSucesso: ModalAlertaSucessoComponent;
   @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
+  @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
 
   constructor(private agendamentoService: AgendamentoService,
-              private modalService: BsModalService) { }
+              private modalService: BsModalService,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -81,10 +87,15 @@ export class ClientesAgendadosComponent implements OnInit {
     );
   }
 
-  abrirModal(id) {
+  abrirModalStatus(id) {
     this.agendamento.id = id;
     this.metodosModal = this.modalService.show(this.templateModalStatus, {class: 'modal-sm-6'});
-    //this.consultarAgendaPorId(this.agendamento.id);
+  }
+
+  abrirModalDeletar(id) {
+    this.agendamento.id = id;
+    this.metodosModal = this.modalService.show(this.templateModalDeletar, {class: 'modal-sm-6'});
+
   }
 
   confirmar(){
@@ -102,8 +113,25 @@ export class ClientesAgendadosComponent implements OnInit {
     this.metodosModal.hide();
   }
 
+  confirmarExclusao(){
+    this.agendamentoService.deletarAgenda(this.agendamento.id).subscribe(
+      res => {
+         this.msgSucesso.setMsgSucesso('Agenda deletada com sucesso.');
+         this.metodosModal.hide();
+         this.consultarAgendasPorData();
+      }, 
+      err => {
+        this.msgErro.setErro('Ocorreu um erro ao tentar deletar essa agenda.');
+      }
+    );
+  }
+
   fechar(){
     this.metodosModal.hide();
+  }
+
+  capturarId(id){
+    this.router.navigate(['agendamento/editar/', id]);
   }
 
 

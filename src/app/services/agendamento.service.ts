@@ -24,12 +24,21 @@ export class AgendamentoService {
   }
 
   buscarAgendaPorId(id: number){
-    return this.http.get<Agendamento>(`${environment.API}agendamento?id=${id}`);
+    return this.http.get<Agendamento>(`${environment.API}agendamento/${id}`);
   }
 
   editarStatusAgenda(agenda: Agendamento){
     const url = `${environment.API}agendamento/${agenda.id}`;
     return this.http.patch(url, agenda).pipe(take(1));
+  }
+
+  editarAgenda(agenda: Agendamento){
+    const url = `${environment.API}agendamento/${agenda.id}`;
+    return this.http.put(url, agenda).pipe(take(1));
+  }
+
+  deletarAgenda(id: number){
+    return this.http.delete(`${environment.API}agendamento/${id}`).pipe(take(1));
   }
 
 }

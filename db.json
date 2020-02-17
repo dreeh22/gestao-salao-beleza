@@ -21,7 +21,7 @@
         "email": "rafaela@gmail.com",
         "outrasInformacoes": "Teste de edição com a inclusão de alguns campos. "
       },
-      "nome": "Rafaela de Jesus Araújo",
+      "nome": "Rafaela de Jesus Araújo Silva",
       "id": 2
     },
     {
@@ -71,12 +71,12 @@
   "agendamento": [
     {
       "dataAgendamento": "2020-02-13",
-      "cliente": "Rafaela de Jesus Araújo",
+      "cliente": "Rafaela de Jesus Araújo Silva",
       "servico": "Corte de cabelo",
       "inicio": "08:00",
       "fim": "10:00",
       "observacao": "-",
-      "status": "Realizado",
+      "status": "Pendente",
       "id": 1
     },
     {
@@ -90,36 +90,6 @@
       "id": 2
     },
     {
-      "dataAgendamento": "2020-02-14",
-      "cliente": "Rafaela de Jesus Araújo",
-      "servico": "Progressiva",
-      "inicio": "08:00",
-      "fim": "09:00",
-      "observacao": "-",
-      "status": "Realizado",
-      "id": 3
-    },
-    {
-      "dataAgendamento": "2020-02-14",
-      "cliente": "Valeria de Araujo",
-      "servico": "Selagem",
-      "inicio": "10:00",
-      "fim": "11:00",
-      "observacao": "-",
-      "status": "Realizado",
-      "id": 4
-    },
-    {
-      "dataAgendamento": "2020-02-14",
-      "cliente": "Marcos de Oliveira",
-      "servico": "Corte de cabelo",
-      "inicio": "13:00",
-      "fim": "14:00",
-      "observacao": "Pagamento em dinheiro",
-      "status": "Cancelado",
-      "id": 5
-    },
-    {
       "dataAgendamento": "2020-02-15",
       "cliente": "Rafaela de Jesus Araújo",
       "servico": "Pintura",
@@ -128,6 +98,46 @@
       "observacao": "Qualquer comentário",
       "status": "Pendente",
       "id": 6
+    },
+    {
+      "id": 9,
+      "dataAgendamento": "2020-02-17",
+      "cliente": "Valeria de Araujo",
+      "servico": "Progressiva",
+      "inicio": "10:00",
+      "fim": "11:00",
+      "observacao": "-",
+      "status": "Pendente"
+    },
+    {
+      "id": 10,
+      "dataAgendamento": "2020-02-17",
+      "cliente": "Rafaela de Jesus Araújo Silva",
+      "servico": "Selagem",
+      "inicio": "13:00",
+      "fim": "14:00",
+      "observacao": "-",
+      "status": "Pendente"
+    },
+    {
+      "dataAgendamento": "2020-02-17",
+      "cliente": "Rafaela de Jesus Araújo Silva",
+      "servico": "Pintura",
+      "inicio": "16:00",
+      "fim": "17:00",
+      "observacao": "-",
+      "status": "Pendente",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "dataAgendamento": "2020-02-17",
+      "cliente": "Marcos de Oliveira",
+      "servico": "Progressiva",
+      "inicio": "18:00",
+      "fim": "19:00",
+      "observacao": "-",
+      "status": "Pendente"
     }
   ]
 }
