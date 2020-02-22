@@ -21,7 +21,7 @@ import { ModalAlertaSucessoComponent } from './1-alertas-compartilhados/modal-al
 import { AlertaSucessoComponent } from './1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
 import { AlertaErroComponent } from './1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 import { ClientesAgendadosComponent } from './agendamento/clientes-agendados/clientes-agendados.component'
-import { Moment } from "moment";
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -49,8 +49,8 @@ import { Moment } from "moment";
     HttpClientModule,
     ModalModule.forRoot(),
     NgxPaginationModule,
-    NgxMaskModule.forRoot()
-  
+    NgxMaskModule.forRoot(),
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

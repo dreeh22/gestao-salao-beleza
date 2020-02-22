@@ -4,7 +4,7 @@
 <app-alerta-erro></app-alerta-erro>
 <app-modal-alerta-sucesso></app-modal-alerta-sucesso>
 
-<form #form="ngForm" (ngSubmit)="consultarAgendasPorData(agendamento.dataAgendamento); form.reset()">
+<form #form="ngForm" (ngSubmit)="consultarAgendasPorData(agendamento); form.reset()">
 
 
 <div class="card ml-4 mr-4">
@@ -38,7 +38,7 @@
   
     <div class="card-body">
   
-        <div class="card shadow-sm bg-white rounded mb-2" *ngFor="let agenda of agendasCadastradas">
+        <div class="card shadow-sm bg-white rounded mb-2" *ngFor="let agenda of agendasCadastradas ">
 
             <div class="card-body row text-center">
               
@@ -57,15 +57,15 @@
 
                 <div class="col-2" [ngSwitch]="agenda.status" >
                   
-                    <button *ngSwitchCase="'Pendente'" class="btn btn-warning text-light" (click)="abrirModalStatus(agenda.id)">
+                    <button *ngSwitchCase="'Pendente'" class="btn btn-warning text-light" (click)="abrirModalStatus(agenda)">
                         <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
                     </button>
 
-                    <button *ngSwitchCase="'Realizado'" class="btn btn-success text-light" (click)="abrirModalStatus(agenda.id)">
+                    <button *ngSwitchCase="'Realizado'" class="btn btn-success text-light" (click)="abrirModalStatus(agenda)">
                       <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
                     </button>
                 
-                    <button *ngSwitchCase="'Cancelado'" class="btn btn-danger text-light" (click)="abrirModalStatus(agenda.id)">
+                    <button *ngSwitchCase="'Cancelado'" class="btn btn-danger text-light" (click)="abrirModalStatus(agenda)">
                        <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
                     </button>
 
@@ -73,14 +73,20 @@
 
                 <div class="col-2">
                     <button class="btn btn-primary mr-2" (click)="capturarId(agenda.id)">Editar</button>
-                    <button class="btn btn-danger" (click)="abrirModalDeletar(agenda.id)">Excluir</button>
+                    <button class="btn btn-danger" (click)="abrirModalDeletar(agenda)">Excluir</button>
                 </div>
+
 
             </div>
 
           </div>
+
+          <div *ngIf="agendasCadastradas.length <= 0">
+            <span>Nenhuma agenda encontrada.</span> 
+          </div>
   
     </div>
+
 
   </div>
 
@@ -94,7 +100,7 @@
 
   <div class="modal-body pb-5">
     
-    <form #form="ngForm" (ngSubmit)="confirmar(agendamento); form.reset()">
+    <form #form="ngForm" (ngSubmit)="editarStatusAgenda(agendamento); form.reset()">
 
       <div class="form-group">
         <label for="status">Status</label>
@@ -108,7 +114,7 @@
 
     <div class="text-center">
       <button type="button" class="btn btn-default" style="margin-top: 5%;" type="submit">Sim</button>
-      <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="fechar()">Não</button>
+      <button type="button" class="btn btn-primary" style="margin-top: 5%;" (click)="fecharModalStatus()">Não</button>
     </div>
 
   </form>

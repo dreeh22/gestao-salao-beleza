@@ -41,4 +41,8 @@ export class AgendamentoService {
     return this.http.delete(`${environment.API}agendamento/${id}`).pipe(take(1));
   }
 
+  consultarTodasAsAgendas(){
+    return this.http.get<Agendamento[]>(`${environment.API}agendamento`);
+  }
+
 }

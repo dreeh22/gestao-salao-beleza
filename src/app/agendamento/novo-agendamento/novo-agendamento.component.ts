@@ -20,6 +20,8 @@ export class NovoAgendamentoComponent implements OnInit {
   clientes: Cliente [] = [];
   servicos: Servico [] = [];
 
+  agendamentosRealizados: Agendamento [] = [];
+
   @ViewChild(ModalAlertaSucessoComponent, {static: false}) msgModalSucesso: ModalAlertaSucessoComponent;
   @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
   @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
@@ -42,7 +44,16 @@ export class NovoAgendamentoComponent implements OnInit {
 
     this.agendamento.status = 'Pendente';
 
-    if(this.agendamento.id == null){
+    this.agendamentoService.consultarTodasAsAgendas().subscribe(res => this.agendamentosRealizados = res);
+    
+    this.agendamentosRealizados.forEach(item => {
+      
+        if(item.inicio == this.agendamento.inicio && item.fim == this.agendamento.fim){
+            this.msgErro.setErro('Já existe uma agenda marcada para o horário informado.');
+        }
+    });
+
+    /*if(this.agendamento.id == null){
 
         this.agendamentoService.salvarAgenda(this.agendamento).subscribe(
           res => {
@@ -58,14 +69,14 @@ export class NovoAgendamentoComponent implements OnInit {
       this.agendamentoService.editarAgenda(this.agendamento).subscribe(
         res => {
           this.msgModalSucesso.setMsgSucesso('Agenda editada com sucesso!');
-          this.router.navigateByUrl('clientes-agendados');
+          this.router.navigateByUrl('agendas-cadastradas');
         },
         err => {
           this.msgErro.setErro('Ocorreu um erro..');
         }
       );
 
-    }
+    }*/
 
     
   }
@@ -81,6 +92,10 @@ export class NovoAgendamentoComponent implements OnInit {
   buscarAgendaPorId(){
     this.route.params.subscribe(params => this.agendamento.id = params['id'])
     this.agendamentoService.buscarAgendaPorId(this.agendamento.id).subscribe(res => this.agendamento = res);
+  }
+
+  buscarTodasAsAgendas(){
+    this.agendamentoService.consultarTodasAsAgendas().subscribe();
   }
 
   

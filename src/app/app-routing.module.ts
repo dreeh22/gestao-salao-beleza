@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'lista-servicos-realizados', component: ListaServicosRealizadosComponent},
   {path: 'servico-realizado/editar/:id', component: ServicosRealizadosComponent},
   {path: 'agendamento/novo', component: NovoAgendamentoComponent},
-  {path: 'clientes-agendados', component: ClientesAgendadosComponent},
+  {path: 'agendas-cadastradas', component: ClientesAgendadosComponent},
   {path: 'agendamento/editar/:id', component: NovoAgendamentoComponent}
 ];
 @NgModule({

@@ -11,6 +11,14 @@
     {
       "nomeServico": "Pintura",
       "id": 4
+    },
+    {
+      "nomeServico": "Corte de Cabelo",
+      "id": 5
+    },
+    {
+      "nomeServico": "Sobrancelhas ",
+      "id": 6
     }
   ],
   "cliente": [
@@ -36,13 +44,21 @@
     },
     {
       "contato": {
-        "celular": "61 9 9885-5682",
-        "telefoneComercial": "61 3331-3880",
+        "celular": "61998855682",
+        "telefoneComercial": "6133313880",
         "email": "marcos@gmail.com",
         "outrasInformacoes": "Cliente solicitou serviço para o dia 13. "
       },
-      "nome": "Marcos de Oliveira",
+      "nome": "Marcos de Oliveira Araújo",
       "id": 4
+    },
+    {
+      "contato": {
+        "celular": "61993173086",
+        "outrasInformacoes": "Não possui telefone comercial e nem e-mail."
+      },
+      "nome": "Valda Maria de Jesus",
+      "id": 5
     }
   ],
   "servico-realizado": [
@@ -70,56 +86,6 @@
   ],
   "agendamento": [
     {
-      "dataAgendamento": "2020-02-13",
-      "cliente": "Rafaela de Jesus Araújo Silva",
-      "servico": "Corte de cabelo",
-      "inicio": "08:00",
-      "fim": "10:00",
-      "observacao": "-",
-      "status": "Pendente",
-      "id": 1
-    },
-    {
-      "dataAgendamento": "2020-02-13",
-      "cliente": "Valeria de Araujo",
-      "servico": "Progressiva",
-      "inicio": "09:00",
-      "fim": "10:00",
-      "observacao": "-",
-      "status": "Realizado",
-      "id": 2
-    },
-    {
-      "dataAgendamento": "2020-02-15",
-      "cliente": "Rafaela de Jesus Araújo",
-      "servico": "Pintura",
-      "inicio": "21:00",
-      "fim": "22:00",
-      "observacao": "Qualquer comentário",
-      "status": "Pendente",
-      "id": 6
-    },
-    {
-      "id": 9,
-      "dataAgendamento": "2020-02-17",
-      "cliente": "Valeria de Araujo",
-      "servico": "Progressiva",
-      "inicio": "10:00",
-      "fim": "11:00",
-      "observacao": "-",
-      "status": "Pendente"
-    },
-    {
-      "id": 10,
-      "dataAgendamento": "2020-02-17",
-      "cliente": "Rafaela de Jesus Araújo Silva",
-      "servico": "Selagem",
-      "inicio": "13:00",
-      "fim": "14:00",
-      "observacao": "-",
-      "status": "Pendente"
-    },
-    {
       "dataAgendamento": "2020-02-17",
       "cliente": "Rafaela de Jesus Araújo Silva",
       "servico": "Pintura",
@@ -130,14 +96,104 @@
       "id": 11
     },
     {
-      "id": 12,
-      "dataAgendamento": "2020-02-17",
-      "cliente": "Marcos de Oliveira",
+      "dataAgendamento": "2020-02-20",
+      "cliente": "Rafaela de Jesus Araújo Silva",
       "servico": "Progressiva",
-      "inicio": "18:00",
-      "fim": "19:00",
+      "inicio": "08:00",
+      "fim": "10:30",
+      "observacao": "Pagamento em dinheiro",
+      "status": "Realizado",
+      "id": 14
+    },
+    {
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Rafaela de Jesus Araújo Silva",
+      "servico": "Sobrancelhas ",
+      "inicio": "08:00",
+      "fim": "09:00",
+      "observacao": "-",
+      "status": "Realizado",
+      "id": 18
+    },
+    {
+      "id": 19,
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Valeria de Araujo",
+      "servico": "Selagem",
+      "inicio": "09:00",
+      "fim": "10:30",
       "observacao": "-",
       "status": "Pendente"
+    },
+    {
+      "id": 20,
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Marcos de Oliveira Araujo",
+      "servico": "Corte de Cabelo",
+      "inicio": "10:30",
+      "fim": "11:00",
+      "observacao": "-",
+      "status": "Pendente"
+    },
+    {
+      "dataAgendamento": "2020-02-20",
+      "cliente": "Valeria de Araujo",
+      "servico": "Selagem",
+      "inicio": "12:00",
+      "fim": "13:00",
+      "observacao": "-",
+      "status": "Realizado",
+      "id": 21
+    },
+    {
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Valeria de Araujo",
+      "servico": "Pintura",
+      "inicio": "15:00",
+      "fim": "16:00",
+      "observacao": "-",
+      "status": "Pendente",
+      "id": 22
+    },
+    {
+      "id": 23,
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Valda Maria de Jesus",
+      "servico": "Selagem",
+      "inicio": "17:00",
+      "fim": "18:00",
+      "observacao": "-",
+      "status": "Pendente"
+    },
+    {
+      "id": 24,
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Rafaela de Jesus Araújo Silva",
+      "servico": "Corte de Cabelo",
+      "inicio": "19:00",
+      "fim": "20:00",
+      "observacao": "-",
+      "status": "Pendente"
+    },
+    {
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Rafaela de Jesus Araújo Silva",
+      "servico": "Selagem",
+      "inicio": "08:00",
+      "fim": "09:00",
+      "observacao": "-",
+      "status": "Pendente",
+      "id": 25
+    },
+    {
+      "dataAgendamento": "2020-02-21",
+      "cliente": "Rafaela de Jesus Araújo Silva",
+      "servico": "Progressiva",
+      "inicio": "08:00",
+      "fim": "09:00",
+      "observacao": "-",
+      "status": "Pendente",
+      "id": 26
     }
   ]
 }

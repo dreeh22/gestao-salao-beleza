@@ -130,4 +130,32 @@ export class ListaServicosRealizadosComponent implements OnInit {
   }
 
 
+  // EXEMPLO DE CONSULTA POR INTERVALO DE DATAS
+  /*buscarTodasAgendas(){
+    this.agendamentoService.consultarTodasAsAgendas().subscribe(res => this.todasAsAgendas = res);
+
+    this.todasAsAgendas.forEach(item =>{
+
+      //this.dataInicial = moment(new Date).format('2020-02-16');
+      //this.dataFinal = moment(new Date).format('2020-02-20');
+
+      //if(item.dataAgendamento > this.dataInicial && item.dataAgendamento <= this.dataFinal){
+       //   this.agendasCadastradas.push(item);
+     // }
+
+
+     this.dataInicial = moment().format('09:00');
+     this.dataFinal = moment().format('10:30');
+
+     if(item.inicio >= this.dataInicial && item.fim <= this.dataFinal){
+          this.agendasCadastradas.push(item);
+          console.log('DATA: ', this.agendasCadastradas);
+      }
+
+
+    })
+
+  }*/
+
+
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-//import { Moment } from "moment";
 
 import * as moment from 'moment';
 import { AgendamentoService } from './../../services/agendamento.service';
@@ -8,8 +7,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
 import { AlertaErroComponent } from 'src/app/1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/modal-alerta-sucesso/modal-alerta-sucesso.component';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-clientes-agendados',
@@ -30,6 +29,14 @@ export class ClientesAgendadosComponent implements OnInit {
   agendamento: Agendamento = new Agendamento();
 
   metodosModal: BsModalRef;
+
+  todasAsAgendas: Agendamento [] = [];
+
+  outrasAgendas: Agendamento [] = [];
+
+  dataInicial;
+
+  dataFinal;
 
   //Array para popular os status existente no componente de select.
   listaStatus = [
@@ -68,57 +75,46 @@ export class ClientesAgendadosComponent implements OnInit {
   consultarAgendasPorData(){
     this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
 
-    this.dataCard = moment(this.agendamento.dataAgendamento).locale('pt-br').format('dddd, MMMM / YYYY');
+    this.dataCard = moment(this.agendamento.dataAgendamento).locale('pt-br').format('DD / MM / YYYY');
 
 }
 
-  //consultarAgendaPorId(id){
-    //this.agendamentoService.buscarAgendaPorId(id).subscribe(res => this.agendamento = res);
-  //}
-
-  editarStatusAgenda(){
-    this.agendamentoService.editarStatusAgenda(this.agendamento).subscribe(
-      res =>{
-          this.modalMsgSucesso.setMsgSucesso('Status editado com sucesso!');
-      },
-      err => {
-        this.msgErro.setErro('Ocorreu um erro...');
-      }
-    );
-  }
-
-  abrirModalStatus(id) {
-    this.agendamento.id = id;
+  abrirModalStatus(agenda) {
+    this.agendamento = agenda;
+    
     this.metodosModal = this.modalService.show(this.templateModalStatus, {class: 'modal-sm-6'});
   }
 
-  abrirModalDeletar(id) {
-    this.agendamento.id = id;
+  editarStatusAgenda(){
+
+    this.agendamentoService.editarStatusAgenda(this.agendamento).subscribe(
+      res =>{
+          this.modalMsgSucesso.setMsgSucesso('Status editado com sucesso!');
+          this.metodosModal.hide();
+          this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
+      },
+      err => {
+        this.metodosModal.hide();
+        this.msgErro.setErro('Ocorreu um erro...');
+      }
+    );
+
+  }
+
+  abrirModalDeletar(agenda) {
+    this.agendamento = agenda;
     this.metodosModal = this.modalService.show(this.templateModalDeletar, {class: 'modal-sm-6'});
 
   }
 
-  confirmar(){
-
-    this.agendamentoService.editarStatusAgenda(this.agendamento).subscribe(
-      res =>{
-          this.modalMsgSucesso.setMsgSucesso('Status editado com sucesso!');
-          this.listarAgendasPorDataAtual();
-      },
-      err => {
-        this.msgErro.setErro('Ocorreu um erro...');
-      }
-    );
-
-    this.metodosModal.hide();
-  }
 
   confirmarExclusao(){
     this.agendamentoService.deletarAgenda(this.agendamento.id).subscribe(
       res => {
-         this.msgSucesso.setMsgSucesso('Agenda deletada com sucesso.');
          this.metodosModal.hide();
-         this.consultarAgendasPorData();
+         this.msgSucesso.setMsgSucesso('Agenda deletada com sucesso.');
+         this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
+         this.dataCard = moment(this.agendamento.dataAgendamento).locale('pt-br').format('DD-MM-YYYY');
       }, 
       err => {
         this.msgErro.setErro('Ocorreu um erro ao tentar deletar essa agenda.');
@@ -128,6 +124,12 @@ export class ClientesAgendadosComponent implements OnInit {
 
   fechar(){
     this.metodosModal.hide();
+    //this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
+  }
+
+  fecharModalStatus(){
+    this.metodosModal.hide();
+    this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
   }
 
   capturarId(id){
