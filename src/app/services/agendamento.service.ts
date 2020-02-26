@@ -19,8 +19,9 @@ export class AgendamentoService {
     return this.http.get<Agendamento[]>(`${environment.API}agendamento?dataAgendamento=${data}`);
   }
 
-  consultarAgendaPorData(data: Date){
-    return this.http.get<Agendamento[]>(`${environment.API}agendamento?dataAgendamento=${data}`)
+  consultarAgendaPorData(data){
+    return this.http.get<Agendamento[]>(`${environment.API}agendamento?dataAgendamento=${data}`);
+    
   }
 
   buscarAgendaPorId(id: number){
@@ -43,6 +44,10 @@ export class AgendamentoService {
 
   consultarTodasAsAgendas(){
     return this.http.get<Agendamento[]>(`${environment.API}agendamento`);
+  }
+
+  consultarAgendasPorStatus(){
+    return this.http.get<Agendamento[]>(`${environment.API}agendamento?status=Realizado`);
   }
 
 }

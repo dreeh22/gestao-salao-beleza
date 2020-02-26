@@ -6,8 +6,9 @@ export class Agendamento {
     dataAgendamento: Date;
     cliente: string;
     servico: string;
-    inicio: Time;
-    fim: Time;
+    inicio: string;
+    fim: string;
     observacao: string;
     status: string;
+    valorServico: number;
 }

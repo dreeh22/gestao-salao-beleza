@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServicosExecutadosService } from 'src/app/services/servicos-executados.service';
-import { ServicoRealizado, ConsultarPorData } from 'src/app/models/servico-realizado';
-import { Router } from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Servico } from 'src/app/models/servico';
-import { Cliente } from './../../models/cliente';
-import { AlertaSucessoComponent } from './../../1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
-import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-erro/alerta-erro.component';
+import { AgendamentoService } from './../../services/agendamento.service';
+import { Agendamento } from 'src/app/models/agendamento';
 
 @Component({
   selector: 'app-lista-servicos-realizados',
@@ -15,147 +10,40 @@ import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-err
 })
 export class ListaServicosRealizadosComponent implements OnInit {
 
-  servicoRealizados: ServicoRealizado [] = [];
+  listaDeServicosRealizados: Agendamento [] = [];
 
-  listaDeServicos: Servico [] = [];
+  listaServicosSemParametro: Agendamento [] = [];
 
-  servicoRealizado: ServicoRealizado = new ServicoRealizado();
+  dataInicio: Date;
+  dataFim: Date;
 
-  clientes: Cliente [] = [];
-
-  @ViewChild('modalDelete', {static: false}) templateModalDelete;
-
-  @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
-
-  @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
-
-  metodosModal: BsModalRef;
 
   constructor(private servicoRealizadoService: ServicosExecutadosService,
-              private router: Router,
-              private modalService: BsModalService) { }
+              private agenda: AgendamentoService) { }
 
   ngOnInit() {
 
-    this.listarServicosRealizados();
-    this.servicosRealizados();
-    this.clientesCadastrados();
-    this.servicoRealizado = new ServicoRealizado();
+    this.servicoRealizadoService.listarServicosRealizados().subscribe(res => this.listaServicosSemParametro = res);
 
   }
 
-  consultarServicosRealizados(form){
+  /*Faz uma consulta dentro de uma lista com 'forEach' de acordo com os parâmetros de entrada
+   já retornada ao apresentar a página*/
+  consultarServicosRealizados(){
 
-    if(this.servicoRealizado.nomeCliente != null){
-        this.servicoRealizadoService.consultarPorCliente(this.servicoRealizado)
-        .subscribe(res => this.servicoRealizados = res);
-    }else 
-    
-    if(this.servicoRealizado.dataServico != null){
-        this.servicoRealizadoService.consultarPorData(this.servicoRealizado)
-        .subscribe(res => this.servicoRealizados = res);
-    }else 
-    
-    if(this.servicoRealizado.nomeServico != null){
-        this.servicoRealizadoService.consultarPorServico(this.servicoRealizado)
-        .subscribe(res => this.servicoRealizados = res);
-    }else 
-    
-    if(this.servicoRealizado.nomeCliente && this.servicoRealizado.dataServico != null){
-        this.servicoRealizadoService.consultarPorNomeData(this.servicoRealizado)
-        .subscribe(res => this.servicoRealizados = res); 
-      }else 
-      
-      if(this.servicoRealizado.nomeCliente && this.servicoRealizado.nomeServico != null){
-      this.servicoRealizadoService.consultarPorNomeData(this.servicoRealizado)
-        .subscribe(res => this.servicoRealizados = res); 
-    }else 
-    
-    if(this.servicoRealizado.dataServico && this.servicoRealizado.nomeServico != null){
-      this.servicoRealizadoService.consultarPorNomeDataServico(this.servicoRealizado)
-      .subscribe(res => this.servicoRealizados = res);
-    }else 
-    
-    if(this.servicoRealizado != null){
-      this.servicoRealizadoService.consultarPorNomeDataServico(this.servicoRealizado)
-     .subscribe(res => this.servicoRealizados = res);
+    this.listaDeServicosRealizados = [];
+
+      this.listaServicosSemParametro.forEach(itemLista => {
+
+        if(itemLista.dataAgendamento >= this.dataInicio && itemLista.dataAgendamento <= this.dataFim){
+
+          this.listaDeServicosRealizados.push(itemLista);
+
+      }
+
+      });
 
     }
- 
-     
-  }
-
-  capiturarIdServico(id){
-    this.router.navigate(['servico-realizado/editar/', id]);
-  }
-
-  abrirModalDelete(id) {
-    this.servicoRealizado.id = id;
-    this.metodosModal = this.modalService.show(this.templateModalDelete, {class: 'modal-sm-6'});
-  }
-
-  confirm(){
-    this.servicoRealizadoService.deletarServicoRealizado(this.servicoRealizado.id).subscribe(
-      res => {
-          this.msgSucesso.setMsgSucesso('Serviço realizado deletado com sucesso!');
-          this.metodosModal.hide();
-          this.listarServicosRealizados();
-      }, 
-      err => {
-          this.msgErro.setErro('Ocorreu um erro ao tentar deletar o serviço realizado!');
-      }
-    );
-  }
-
-  decline(){
-    this.metodosModal.hide();
-  }
-
-  listarServicosRealizados(){
-
-    this.servicoRealizadoService.listarServicosRealizados().subscribe(
-      res => this.servicoRealizados = res
-    );
-
-  }
-
-  servicosRealizados(){
-      this.servicoRealizadoService.consultarServicos().subscribe(
-        res => this.listaDeServicos = res
-      );
-  };
-
-  clientesCadastrados(){
-    this.servicoRealizadoService.listarClientes().subscribe(res => this.clientes = res);
-  }
-
-
-  // EXEMPLO DE CONSULTA POR INTERVALO DE DATAS
-  /*buscarTodasAgendas(){
-    this.agendamentoService.consultarTodasAsAgendas().subscribe(res => this.todasAsAgendas = res);
-
-    this.todasAsAgendas.forEach(item =>{
-
-      //this.dataInicial = moment(new Date).format('2020-02-16');
-      //this.dataFinal = moment(new Date).format('2020-02-20');
-
-      //if(item.dataAgendamento > this.dataInicial && item.dataAgendamento <= this.dataFinal){
-       //   this.agendasCadastradas.push(item);
-     // }
-
-
-     this.dataInicial = moment().format('09:00');
-     this.dataFinal = moment().format('10:30');
-
-     if(item.inicio >= this.dataInicial && item.fim <= this.dataFinal){
-          this.agendasCadastradas.push(item);
-          console.log('DATA: ', this.agendasCadastradas);
-      }
-
-
-    })
-
-  }*/
 
 
 }

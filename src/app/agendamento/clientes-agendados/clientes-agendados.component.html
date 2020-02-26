@@ -51,11 +51,15 @@
                     {{agenda.cliente}}
                 </div>
 
+                <div class="col-1">
+                  R$: {{agenda.valorServico}}
+               </div>
+
                 <div class="col-3">
                     {{agenda.observacao}}
                 </div>
 
-                <div class="col-2" [ngSwitch]="agenda.status" >
+                <div class="col-1" [ngSwitch]="agenda.status" >
                   
                     <button *ngSwitchCase="'Pendente'" class="btn btn-warning text-light" (click)="abrirModalStatus(agenda)">
                         <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
@@ -72,8 +76,12 @@
                 </div>
 
                 <div class="col-2">
-                    <button class="btn btn-primary mr-2" (click)="capturarId(agenda.id)">Editar</button>
-                    <button class="btn btn-danger" (click)="abrirModalDeletar(agenda)">Excluir</button>
+                    <button class="btn btn-primary mr-2" (click)="capturarId(agenda.id)">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-danger" (click)="abrirModalDeletar(agenda)">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
                 </div>
 
 

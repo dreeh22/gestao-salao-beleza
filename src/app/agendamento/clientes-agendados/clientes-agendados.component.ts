@@ -114,7 +114,7 @@ export class ClientesAgendadosComponent implements OnInit {
          this.metodosModal.hide();
          this.msgSucesso.setMsgSucesso('Agenda deletada com sucesso.');
          this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
-         this.dataCard = moment(this.agendamento.dataAgendamento).locale('pt-br').format('DD-MM-YYYY');
+         this.dataCard = moment(this.agendamento.dataAgendamento).locale('pt-br').format('DD / MM / YYYY');
       }, 
       err => {
         this.msgErro.setErro('Ocorreu um erro ao tentar deletar essa agenda.');
@@ -124,7 +124,6 @@ export class ClientesAgendadosComponent implements OnInit {
 
   fechar(){
     this.metodosModal.hide();
-    //this.agendamentoService.consultarAgendaPorData(this.agendamento.dataAgendamento).subscribe(res => this.agendasCadastradas = res);
   }
 
   fecharModalStatus(){

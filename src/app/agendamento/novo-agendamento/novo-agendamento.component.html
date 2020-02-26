@@ -62,7 +62,7 @@
 
             <div class="form-row">
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
 
                     <label for="servico">Serviço</label>
 
@@ -85,7 +85,7 @@
 
                 </div>
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="horarioInicio">Início</label>
                     <input type="time" 
                             name="inicio"
@@ -100,7 +100,7 @@
                             </div>
                 </div>
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="horarioFim">Fim</label>
                     <input type="time" 
                             name="fim"
@@ -115,6 +115,24 @@
                            </div>
                 </div>
 
+                <div class="form-group col-md-3">
+                    <label for="valor">Valor do Serviço</label>
+                    <input type="number" 
+                            step="any"
+                            min="0"
+                            name="valorServico"
+                           class="form-control" 
+                           id="valor"
+                           [(ngModel)]="agendamento.valorServico"
+                           #campoValor="ngModel"
+                           placeholder="0.00"
+                           required>
+
+                           <div *ngIf="campoValor.invalid && campoValor.touched">
+                                <span style="color:#ff0000">Campo obrigatório</span> 
+                           </div>
+                </div>
+
                 <div class="form-group col-12">
                     <label for="observacao">Observação</label>
                     <textarea class="form-control" 
@@ -125,7 +143,7 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
+            <button type="submit"  class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
 
             
         </form>

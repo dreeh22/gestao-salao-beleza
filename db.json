@@ -93,7 +93,8 @@
       "fim": "17:00",
       "observacao": "-",
       "status": "Pendente",
-      "id": 11
+      "id": 11,
+      "valorServico": 85
     },
     {
       "dataAgendamento": "2020-02-20",
@@ -103,7 +104,8 @@
       "fim": "10:30",
       "observacao": "Pagamento em dinheiro",
       "status": "Realizado",
-      "id": 14
+      "id": 14,
+      "valorServico": 150
     },
     {
       "dataAgendamento": "2020-02-21",
@@ -113,84 +115,38 @@
       "fim": "09:00",
       "observacao": "-",
       "status": "Realizado",
-      "id": 18
+      "id": 18,
+      "valorServico": 30
     },
     {
-      "id": 19,
-      "dataAgendamento": "2020-02-21",
-      "cliente": "Valeria de Araujo",
-      "servico": "Selagem",
-      "inicio": "09:00",
-      "fim": "10:30",
-      "observacao": "-",
-      "status": "Pendente"
-    },
-    {
-      "id": 20,
-      "dataAgendamento": "2020-02-21",
-      "cliente": "Marcos de Oliveira Araujo",
-      "servico": "Corte de Cabelo",
-      "inicio": "10:30",
-      "fim": "11:00",
-      "observacao": "-",
-      "status": "Pendente"
-    },
-    {
-      "dataAgendamento": "2020-02-20",
-      "cliente": "Valeria de Araujo",
-      "servico": "Selagem",
-      "inicio": "12:00",
-      "fim": "13:00",
-      "observacao": "-",
-      "status": "Realizado",
-      "id": 21
-    },
-    {
-      "dataAgendamento": "2020-02-21",
-      "cliente": "Valeria de Araujo",
-      "servico": "Pintura",
-      "inicio": "15:00",
-      "fim": "16:00",
-      "observacao": "-",
-      "status": "Pendente",
-      "id": 22
-    },
-    {
-      "id": 23,
-      "dataAgendamento": "2020-02-21",
-      "cliente": "Valda Maria de Jesus",
-      "servico": "Selagem",
-      "inicio": "17:00",
-      "fim": "18:00",
-      "observacao": "-",
-      "status": "Pendente"
-    },
-    {
-      "id": 24,
-      "dataAgendamento": "2020-02-21",
-      "cliente": "Rafaela de Jesus Araújo Silva",
-      "servico": "Corte de Cabelo",
-      "inicio": "19:00",
-      "fim": "20:00",
-      "observacao": "-",
-      "status": "Pendente"
-    },
-    {
-      "dataAgendamento": "2020-02-21",
-      "cliente": "Rafaela de Jesus Araújo Silva",
-      "servico": "Selagem",
-      "inicio": "08:00",
-      "fim": "09:00",
-      "observacao": "-",
-      "status": "Pendente",
-      "id": 25
-    },
-    {
-      "dataAgendamento": "2020-02-21",
+      "dataAgendamento": "2020-02-24",
       "cliente": "Rafaela de Jesus Araújo Silva",
       "servico": "Progressiva",
       "inicio": "08:00",
       "fim": "09:00",
+      "observacao": "Pagamento com cartão de crédito",
+      "status": "Realizado",
+      "id": 24,
+      "valorServico": 110
+    },
+    {
+      "dataAgendamento": "2020-02-24",
+      "cliente": "Valeria de Araujo",
+      "servico": "Pintura",
+      "inicio": "09:00",
+      "fim": "10:00",
+      "observacao": "-",
+      "status": "Pendente",
+      "id": 25,
+      "valorServico": 35
+    },
+    {
+      "valorServico": 60,
+      "dataAgendamento": "2020-02-24",
+      "cliente": "Rafaela de Jesus Araújo Silva",
+      "servico": "Progressiva",
+      "inicio": "10:00",
+      "fim": "11:00",
       "observacao": "-",
       "status": "Pendente",
       "id": 26

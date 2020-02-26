@@ -8,6 +8,7 @@ import { ModalAlertaSucessoComponent } from 'src/app/1-alertas-compartilhados/mo
 import { AlertaErroComponent } from './../../1-alertas-compartilhados/alerta-erro/alerta-erro.component';
 import { AlertaSucessoComponent } from './../../1-alertas-compartilhados/alerta-sucesso/alerta-sucesso.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-novo-agendamento',
@@ -22,9 +23,14 @@ export class NovoAgendamentoComponent implements OnInit {
 
   agendamentosRealizados: Agendamento [] = [];
 
+  agendasCadastradas: Agendamento [] = [];
+
+
   @ViewChild(ModalAlertaSucessoComponent, {static: false}) msgModalSucesso: ModalAlertaSucessoComponent;
   @ViewChild(AlertaErroComponent, {static: false}) msgErro: AlertaErroComponent;
   @ViewChild(AlertaSucessoComponent, {static: false}) msgSucesso: AlertaSucessoComponent;
+
+  horarioJaAgendado:boolean =false;
 
   constructor( private agendamentoService: AgendamentoService,
                private compartilhadoService: CompartilhadoService,
@@ -37,46 +43,38 @@ export class NovoAgendamentoComponent implements OnInit {
 
     this.listarClientesEServico();
     this.buscarAgendaPorId();
+    //this.agendamentoService.consultarTodasAsAgendas().subscribe(res => this.agendamentosRealizados = res);
 
   }
 
   salvarAgenda(){
 
-    this.agendamento.status = 'Pendente';
+    if(this.agendamento.id == null){
 
-    this.agendamentoService.consultarTodasAsAgendas().subscribe(res => this.agendamentosRealizados = res);
-    
-    this.agendamentosRealizados.forEach(item => {
-      
-        if(item.inicio == this.agendamento.inicio && item.fim == this.agendamento.fim){
-            this.msgErro.setErro('Já existe uma agenda marcada para o horário informado.');
-        }
-    });
+      this.agendamento.status = 'Pendente';
 
-    /*if(this.agendamento.id == null){
-
-        this.agendamentoService.salvarAgenda(this.agendamento).subscribe(
+      this.agendamentoService.salvarAgenda(this.agendamento).subscribe(
           res => {
             this.msgModalSucesso.setMsgSucesso('Agendamento realizado com sucesso!');
           },
           err => {
             this.msgErro.setErro('Ocorreu um erro ao tentar realizar o agendamento.');
           }
-        );
-
-    }else {
-
-      this.agendamentoService.editarAgenda(this.agendamento).subscribe(
-        res => {
-          this.msgModalSucesso.setMsgSucesso('Agenda editada com sucesso!');
-          this.router.navigateByUrl('agendas-cadastradas');
-        },
-        err => {
-          this.msgErro.setErro('Ocorreu um erro..');
-        }
       );
 
-    }*/
+  }else {
+
+    this.agendamentoService.editarAgenda(this.agendamento).subscribe(
+      res => {
+        this.msgModalSucesso.setMsgSucesso('Agenda editada com sucesso!');
+        this.router.navigateByUrl('agendas-cadastradas');
+      },
+      err => {
+        this.msgErro.setErro('Ocorreu um erro..');
+      }
+    );
+
+  }
 
     
   }
