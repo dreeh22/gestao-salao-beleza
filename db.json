@@ -17,8 +17,8 @@
       "id": 5
     },
     {
-      "nomeServico": "Sobrancelhas ",
-      "id": 6
+      "nomeServico": "Modelagem de Sobrancelhas",
+      "id": 7
     }
   ],
   "cliente": [
@@ -150,6 +150,17 @@
       "observacao": "-",
       "status": "Pendente",
       "id": 26
+    },
+    {
+      "dataAgendamento": "2020-02-26",
+      "cliente": "Valeria de Araujo",
+      "servico": "Modelagem de Sobrancelhas",
+      "inicio": "12:00",
+      "fim": "13:00",
+      "valorServico": 25,
+      "observacao": "-",
+      "status": "Pendente",
+      "id": 27
     }
   ]
 }

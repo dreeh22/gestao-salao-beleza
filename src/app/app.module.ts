@@ -13,7 +13,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NovoClienteComponent } from './clientes/novo-cliente/novo-cliente.component';
 import { ListarClientesComponent } from './clientes/listar-clientes/listar-clientes.component';
-import { ServicosRealizadosComponent } from './servicos/servicos-realizados/servicos-realizados.component';
 import { ListaServicosRealizadosComponent } from './servicos/lista-servicos-realizados/lista-servicos-realizados.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { NovoAgendamentoComponent } from './agendamento/novo-agendamento/novo-agendamento.component';
@@ -34,7 +33,6 @@ import { OrderModule } from 'ngx-order-pipe';
     ListaServicosComponent,
     NovoClienteComponent,
     ListarClientesComponent,
-    ServicosRealizadosComponent,
     ListaServicosRealizadosComponent,
     NovoAgendamentoComponent,
     ModalAlertaSucessoComponent,
